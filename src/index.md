@@ -3,24 +3,45 @@
 layout: home
 
 hero:
-  name: "validation-br"
+  name: "validation-br v2.0"
   text: "Validação de documentos do Brasil"
-  tagline: My great project tagline
+  tagline: Versão atual com classes, máscaras e utilitários avançados
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: Documentação
+      link: /documents/cpf
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: Ver v1.0
+      link: /v1/
 
 features:
   - title: CPF
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+    details: Validação com classe, máscara e geração de dados fake
     link: /documents/cpf
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: CNPJ
+    details: Suporte para alfanuméricos (entrada 2026)
+    link: /documents/cnpj
+  - title: Documentos
+    details: CNH, RENAVAM, Título de Eleitor e mais
+    link: /documents/cnh
+  - title: PIX
+    details: Validação de chaves PIX com múltiplos formatos
+    link: /documents/pix-key
+  - title: Utilitários
+    details: Funções para manipulação e validação de dados
+    link: /documents/utils
+  - title: UF
+    details: Validador de Unidades Federativas com nome preenchido
+    link: /documents/uf
 ---
 
+## Migração de v1.0
+
+Se você está usando a v1.0, [consulte a documentação legada](/v1/).
+
+**Principais mudanças em v2.0:**
+- ✅ Classes com validação automática
+- ✅ Método `.mask()` para formatação
+- ✅ Método `.fake()` para dados de teste
+- ✅ Checksum calculável independentemente
+- ✅ Getters para acesso a propriedades

@@ -4,13 +4,20 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   srcDir: "src",
   
-  title: "validation-br",
+  title: "validation-br v2.0",
   description: "Validação de documentos do Brasil",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
+      { text: 'Examples', link: '/markdown-examples' },
+      { 
+        text: 'Versão',
+        items: [
+          { text: 'v2.0 (atual)', link: '/' },
+          { text: 'v1.0 (legada)', link: '/v1/' }
+        ]
+      }
     ],
 
     sidebar: [
