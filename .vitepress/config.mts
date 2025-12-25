@@ -4,30 +4,30 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   srcDir: "src",
   
-  title: "validation-br v2.0",
+  title: "Validation BR",
   description: "Validação de documentos do Brasil",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' },
+      // { text: 'Examples', link: '/markdown-examples' },
       { 
         text: 'Versão',
         items: [
-          { text: 'v2.0 (atual)', link: '/' },
-          { text: 'v1.0 (legada)', link: '/v1/' }
+          { text: 'v1.6.0 (current)', link: '/',  },
+          { text: 'v2.0 (next)', link: '/v2' },
         ]
-      }
+      },
     ],
 
     sidebar: [
-      {
-        text: 'Examples',
-        items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
-        ]
-      },
+      // {
+      //   text: 'Examples',
+      //   items: [
+      //     { text: 'Markdown Examples', link: '/markdown-examples' },
+      //     { text: 'Runtime API Examples', link: '/api-examples' }
+      //   ]
+      // },
       {
         text: 'Documentos',
         items: [
@@ -59,7 +59,8 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
+      { icon: 'github', link: 'https://github.com/klawdyo/validation-br' },
+      { icon: 'npm', link: 'https://npmjs.org/package/validation-br' },
     ]
   }
 })

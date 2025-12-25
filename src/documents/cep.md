@@ -4,15 +4,17 @@ outline: deep
 
 # CEP
 
-Descrição: Validador para códigos postais brasileiros (CEP). Página agrupada em `Utils`.
+**Versão 1.0** - Validador para códigos postais.
 
-## Exemplos (API)
+## API
 
 ```js
-const c = new CEP('01001-000')
-console.log('CEP.toString()', c.toString())
-console.log('CEP.mask()', c.mask())
+import { isCEP } from 'validation-br@1.0'
 
-const fake = CEP.fake()
-console.log('CEP.fake()', fake.toString())
+const result = isCEP('01001-000')
+console.log(result) // true ou false
 ```
+
+## Notas
+
+Validação simples. [Para mais recursos com máscaras e utilitários, use a v2.0](/)

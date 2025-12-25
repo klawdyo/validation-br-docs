@@ -1,9 +1,47 @@
 ---
-outline: deep
+layout: home
+
+hero:
+  name: "validation-br"
+  text: "Validação de documentos do Brasil"
+  tagline: "Versão 1.6"
+  actions:
+    - theme: brand
+      text: Documentação
+      link: /v1/cpf
+    - theme: alt
+      text: Ir para v2.0
+      link: /
+
+features:
+  - icon: ✓
+    title: Validadores
+    details: CPF, CNPJ, CNH e mais documentos brasileiros
+  - icon: 🛠️
+    title: API Simples
+    details: Funções booleanas (isCPF, isCNPJ, etc.)
+  - icon: 📦
+    title: Leve
+    details: Sem dependências externas
+
 ---
 
-# Documentos
+## Sobre v1.0
 
-This page demonstrates usage of some of the runtime APIs provided by VitePress.
+Esta é a documentação legada da versão 1.0 do `validation-br`.
 
-The main `useData()` API can be used to access site, theme, and page data for the current page. It works in both `.md` and `.vue` files:
+### Características v1.0
+
+- ✓ Validação simples (retorna true/false)
+- ✓ Suporte para CPF, CNPJ, CNH, CEP e mais
+- ✓ Sem dependências externas
+
+### Atualize para v2.0
+
+A v2.0 oferece:
+- ✅ Classes com validação automática
+- ✅ Método `.mask()` para formatação
+- ✅ Método `.fake()` para dados de teste
+- ✅ Utilitários avançados
+
+[Consulte a documentação v2.0](/)
