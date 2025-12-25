@@ -1,6 +1,8 @@
+@import 'styles.css';
+
 /* Custom styles for version selector */
 :root {
-  --vp-c-brand: #646cff;
+  --vp-c-brand: #0d18eb;
   --vp-c-brand-dimm: rgba(100, 108, 255, 0.1);
 }
 

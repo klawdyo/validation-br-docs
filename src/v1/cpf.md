@@ -7,6 +7,14 @@ sidebar: true
 
 Validador para números de CPF (Cadastro de Pessoas Físicas).
 
+## Validador
+
+<CPFValidator />
+
+## Gerador 
+
+<CPFGenerator />
+
 ## Como usar?
 
 ### Importação direta
@@ -96,3 +104,16 @@ dv('012345678'); // -> '90'
    Obs.: Caso o cálculo de DV2 retorne 10, o resultado será 0.
  
 ```
+
+
+<!-- {{ Shared.versions }} -->
+
+<script setup lang="ts">
+  // import Shared from '@/.vitepress/shared.ts'
+  import CPFValidator from '@/src/components/cpf-validate-form.vue'
+  import CPFGenerator from '@/src/components/cpf-generator.vue'
+
+  
+
+
+</script>
