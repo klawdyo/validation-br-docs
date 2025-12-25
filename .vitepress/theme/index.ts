@@ -5,9 +5,9 @@ import './custom.css'
 
 export default {
   extends: Theme,
-  Layout() {
-    return h(Theme.Layout, null, {
-      'nav-bar-content-after': () => h(VersionSelector)
-    })
-  }
+  // Layout() {
+  //   return h(Theme.Layout, null, {
+  //     'nav-bar-content-after': () => h(VersionSelector)
+  //   })
+  // }
 }

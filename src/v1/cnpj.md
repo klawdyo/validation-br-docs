@@ -15,6 +15,3 @@ const result = isCNPJ('12.345.678/0001-95')
 console.log(result) // true ou false
 ```
 
-## Notas
-
-Na versão 1.0, apenas validação booleana. [Upgrade para v2.0](/) para máscaras e classes.

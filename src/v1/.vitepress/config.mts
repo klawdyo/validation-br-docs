@@ -1,16 +1,19 @@
-import { defineConfig } from 'vitepress'
+import { defineConfig } from 'vitepress';
+import Shared from '../../../.vitepress/shared';
+import { fileURLToPath } from 'node:url';
 
 export default defineConfig({
-  srcDir: '.',
+  // srcDir: '.',
   outDir: '../../../.vitepress/dist/v1',
-  
-  title: 'validation-br v1.0',
-  description: 'Validação de documentos - Versão 1.0 (Legada)',
-  
+
+
+  title: Shared.name,
+  description: Shared.description,
+
   themeConfig: {
     nav: [
-      { text: 'Home', link: '/v1/' },
-      { text: 'v2.0 (atual)', link: '/' }
+      { text: Shared.versions.current, link: '/v1/' },
+      { text: Shared.versions.next, link: '/v2/' }
     ],
 
     sidebar: [
@@ -24,9 +27,5 @@ export default defineConfig({
         ]
       }
     ],
-
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/klawdyo/validation-br' }
-    ]
   }
-})
+});

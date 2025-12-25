@@ -3,3 +3,14 @@
   --vp-c-brand: #646cff;
   --vp-c-brand-dimm: rgba(100, 108, 255, 0.1);
 }
+
+a.VPSocialLink[aria-label="npm"] {
+  color: #CB3837
+}
+
+a.VPSocialLink[aria-label="github"] {
+  color: #24292e 
+}
+.dark a.VPSocialLink[aria-label="github"] {
+  color: #FFFFFF
+}
