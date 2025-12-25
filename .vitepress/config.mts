@@ -1,7 +1,5 @@
 import { defineConfig } from 'vitepress';
-import Shared from '../src/shared';
-import { fileURLToPath } from 'node:url';
-import path from 'node:path';
+import Shared from '../.vitepress/shared';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -10,7 +8,7 @@ export default defineConfig({
   title: "Validation BR",
   description: "Validação de documentos do Brasil",
 
-  
+
 
 
   themeConfig: {
@@ -35,35 +33,58 @@ export default defineConfig({
       //     { text: 'Runtime API Examples', link: '/api-examples' }
       //   ]
       // },
-      // {
-      //   text: 'Documentos',
-      //   items: [
-      //     { text: 'CPF', link: '/documents/cpf' },
-      //     { text: 'CNPJ', link: '/documents/cnpj' },
-      //     { text: 'CNH', link: '/documents/cnh' },
-      //     { text: 'Placa (CarPlate)', link: '/documents/carplate' },
-      //     { text: 'PIS / PASEP', link: '/documents/pis-pasep' },
-      //     { text: 'NUP17', link: '/documents/nup17' },
-      //     { text: 'Processo Judicial', link: '/documents/judicial-process' },
-      //     { text: 'RENAVAM', link: '/documents/renavam' },
-      //     { text: 'Título de Eleitor', link: '/documents/tituloEleitor' },
-      //     { text: 'Cód. Rastreamento Postal', link: '/documents/postal-track-code' },
-      //     { text: 'PIX Key', link: '/documents/pix-key' },
-      //     { text: 'PIX Copy/Paste (BETA)', link: '/documents/pix-copy-paste' }
-      //   ]
-      // },
+      { text: 'Home', link: '/v1' },
+      { text: 'Instalação', link: '/v1/install' },
+
+      {
+        text: 'Documentos',
+        items: [
+          { text: 'CPF', link: '/v1/cpf' },
+          { text: 'CNPJ', link: '/v1/cnpj' },
+          { text: 'CNH', link: '/v1/cnh' },
+          { text: 'Placa (CarPlate)', link: '/v1/carplate' },
+          { text: 'PIS / PASEP', link: '/v1/pis-pasep' },
+          { text: 'NUP17', link: '/v1/nup17' },
+          { text: 'Processo Judicial', link: '/v1/judicial-process' },
+          { text: 'RENAVAM', link: '/v1/renavam' },
+          { text: 'Título de Eleitor', link: '/v1/tituloEleitor' },
+          { text: 'Cód. Rastreamento Postal', link: '/v1/postal-track-code' },
+        ]
+      },
+
+      {
+        text: 'Integração',
+        items: [
+          { text: 'Yup', link: '/v1/integrations/yup' },
+          { text: 'Zod', link: '/v1/integrations/zod' },
+          { text: 'Class Validator', link: '/v1/integrations/class-validator' },
+          { text: 'Veelidate', link: '/v1/integrations/veelidate' },
+          { text: 'Joi', link: '/v1/integrations/joi' }
+        ]
+      },
       // {
       //   text: 'Utils',
       //   items: [
-      //     { text: 'Utils (funções)', link: '/documents/utils' },
-      //     { text: 'UF', link: '/documents/uf' },
-      //     { text: 'CEP', link: '/documents/cep' },
-      //     { text: 'UUID (suporte PIX)', link: '/documents/uuid' },
-      //     { text: 'Email (suporte PIX)', link: '/documents/email' },
-      //     { text: 'Telefone (suporte PIX)', link: '/documents/phone' }
+      //     { text: 'clearText', link: '/utils/clearText' },
       //   ]
       // }
     ],
+
+    editLink: {
+      text: 'Edit',
+      pattern: 'https://github.com/klawdyo/validation-br-docs/tree/main/src/:path',
+    },
+
+    lastUpdated: {
+      text: 'Última atualização',
+      formatOptions: {
+        dateStyle: 'full',
+        timeStyle: 'short'
+      }
+    },
+
+
+    returnToTopLabel: 'Topo',
 
     socialLinks: [
       { icon: 'github', link: Shared.github },
