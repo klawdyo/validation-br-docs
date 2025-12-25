@@ -17,4 +17,4 @@ console.log(result) // true ou false
 
 ## Notas
 
-Na versão 1.0, apenas validação booleana. Upgrade para v2.0 para máscaras e classes.
+Na versão 1.0, apenas validação booleana. [Upgrade para v2.0](/) para máscaras e classes.

@@ -17,4 +17,4 @@ console.log(result) // true ou false
 
 ## Notas
 
-Validação simples. Para mais recursos com máscaras e utilitários, use a v2.0.
+Validação simples. [Para mais recursos com máscaras e utilitários, use a v2.0](/)

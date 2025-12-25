@@ -17,4 +17,4 @@ console.log(result) // true ou false
 
 ## Notas
 
-Apenas validação booleana na v1.0.
+Apenas validação booleana na v1.0. [Veja v2.0](/) para recursos avançados.

@@ -8,7 +8,7 @@ hero:
   actions:
     - theme: brand
       text: Documentação
-      link: /documents/cpf
+      link: /v1/cpf
     - theme: alt
       text: Ir para v2.0
       link: /
