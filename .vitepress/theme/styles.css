@@ -1,0 +1,78 @@
+/* Shared styles for CPF components (deduplicated)
+   Placed in the VitePress theme styles so they apply site-wide.
+*/
+
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.vp-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid var(--vp-c-divider, #e6e6e6);
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background: var(--vp-c-page-bg, transparent);
+  color: var(--vp-c-text, #111827);
+}
+
+.vp-input:focus {
+  outline: none;
+  border-color: var(--vp-c-brand, #3b82f6);
+  box-shadow: 0 0 0 6px rgba(59,130,246,0.08);
+}
+
+.vp-button {
+  padding: 8px 16px;
+  background-color: var(--vp-c-brand, #3b82f6);
+  color: var(--vp-c-white, #ffffff);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: transform 0.08s ease, filter 0.12s ease;
+}
+
+/* Use filter to darken instead of reassigning background-color to avoid
+   theme variables falling back to white on hover in some themes. */
+.vp-button:hover {
+  filter: brightness(0.92);
+}
+
+.vp-button:active {
+  transform: scale(0.98);
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.generated-cpf-container {
+  margin-top: 16px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.generated-cpf-value {
+  cursor: pointer;
+  user-select: all;
+}
+
+.error-message {
+  color: var(--vp-c-danger-1, #ef4444);
+  margin-top: 8px;
+  font-size: 14px;
+}
+.success-message {
+  color: var(--vp-c-success-1, #10b981);
+  margin-top: 8px;
+  font-size: 14px;
+}

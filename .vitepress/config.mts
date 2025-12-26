@@ -1,65 +1,79 @@
-import { defineConfig } from 'vitepress'
+import { DefaultTheme, defineConfig } from 'vitepress';
+import Shared from '../.vitepress/shared';
+import path from 'path';
+
+
+
+import { sideBar as v1SideBar } from '../src/v1/.vitepress/v1.config.ts';
+import { sideBar as v2SideBar } from '../src/v2/.vitepress/v2.config.ts';
+
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   srcDir: "src",
-  
-  title: "validation-br v2.0",
-  description: "Validação de documentos do Brasil",
+
+  title: Shared.name,
+  description: Shared.description,
+  cleanUrls: true,
+
+  vite: {
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, '..')
+      }
+    }
+  },
+
   themeConfig: {
+
+    
+
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' },
-      { 
+      // { text: 'Examples', link: '/markdown-examples' },
+      {
         text: 'Versão',
         items: [
-          { text: 'v2.0 (atual)', link: '/' },
-          { text: 'v1.0 (legada)', link: '/v1/' }
+          { text: Shared.versions.current, link: '/v1', },
+          { text: Shared.versions.next, link: '/v2' },
         ]
-      }
+      },
     ],
 
-    sidebar: [
-      {
-        text: 'Examples',
-        items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
-        ]
-      },
-      {
-        text: 'Documentos',
-        items: [
-          { text: 'CPF', link: '/documents/cpf' },
-          { text: 'CNPJ', link: '/documents/cnpj' },
-          { text: 'CNH', link: '/documents/cnh' },
-          { text: 'Placa (CarPlate)', link: '/documents/carplate' },
-          { text: 'PIS / PASEP', link: '/documents/pis-pasep' },
-          { text: 'NUP17', link: '/documents/nup17' },
-          { text: 'Processo Judicial', link: '/documents/judicial-process' },
-          { text: 'RENAVAM', link: '/documents/renavam' },
-          { text: 'Título de Eleitor', link: '/documents/tituloEleitor' },
-          { text: 'Cód. Rastreamento Postal', link: '/documents/postal-track-code' },
-          { text: 'PIX Key', link: '/documents/pix-key' },
-          { text: 'PIX Copy/Paste (BETA)', link: '/documents/pix-copy-paste' }
-        ]
-      },
-      {
-        text: 'Utils',
-        items: [
-          { text: 'Utils (funções)', link: '/documents/utils' },
-          { text: 'UF', link: '/documents/uf' },
-          { text: 'CEP', link: '/documents/cep' },
-          { text: 'UUID (suporte PIX)', link: '/documents/uuid' },
-          { text: 'Email (suporte PIX)', link: '/documents/email' },
-          { text: 'Telefone (suporte PIX)', link: '/documents/phone' }
-        ]
+    logo: '/logo.svg',
+
+
+    sidebar: {
+      '/v1': v1SideBar,
+      // '/v2
+      // '/v1': [
+      //   // { text: path.resolve(__dirname, '..', '.vitepress'), link: '/v2/install' },
+      //   ...v1SideBar
+      // ],
+      '/v2': v2SideBar,
+    },
+
+    editLink: {
+      text: 'Edite esta página no GitHub',
+      pattern: 'https://github.com/klawdyo/validation-br-docs/tree/main/src/:path',
+    },
+
+    lastUpdated: {
+      text: 'Atualização',
+      formatOptions: {
+        dateStyle: 'short',
+        timeStyle: 'short',
+        timeZone: 'America/Sao_Paulo'
       }
-    ],
+    },
+
+
+    returnToTopLabel: 'Topo',
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
+      { icon: 'github', link: Shared.github },
+      { icon: 'npm', link: Shared.npm },
     ]
   }
-})
+});

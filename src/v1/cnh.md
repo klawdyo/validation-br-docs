@@ -1,10 +1,13 @@
 ---
 outline: deep
+layout: doc
+title: CNH
+lang: pt-BR
 ---
 
 # CNH
 
-**Versão 1.0** - Validador para números de habilitação.
+Validador para números de habilitação.
 
 ## API
 
@@ -15,6 +18,3 @@ const result = isCNH('01234567890')
 console.log(result) // true ou false
 ```
 
-## Notas
-
-Apenas validação booleana na v1.0. [Veja v2.0](/) para recursos avançados.
