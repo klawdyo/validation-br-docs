@@ -1,12 +1,11 @@
-import { DefaultTheme, defineConfig } from 'vitepress';
-import Shared from '../.vitepress/shared';
+import { defineConfig } from 'vitepress';
+import Shared  from '../.vitepress/shared';
 import path from 'path';
-
-
 
 import { sideBar as v1SideBar } from '../src/v1/.vitepress/v1.config.ts';
 import { sideBar as v2SideBar } from '../src/v2/.vitepress/v2.config.ts';
 import Unocss from 'unocss/vite'
+import { Versions } from './theme/versions.enum.ts';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -30,17 +29,17 @@ export default defineConfig({
 
   themeConfig: {
 
-
+    siteTitle: `${Shared.name}`,
 
     // https://vitepress.dev/reference/default-theme-config
     nav: [
+      // { text: 'Examples', link: String(useData().page)},
       { text: 'Home', link: '/' },
-      // { text: 'Examples', link: '/markdown-examples' },
       {
         text: 'Versão',
         items: [
-          { text: Shared.versions.current, link: '/v1', },
-          { text: Shared.versions.next, link: '/v2' },
+          { text: Versions.current, link: '/v1/', },
+          { text: Versions.next, link: '/v2/' },
         ]
       },
     ],
