@@ -6,7 +6,7 @@ import path from 'path';
 
 import { sideBar as v1SideBar } from '../src/v1/.vitepress/v1.config.ts';
 import { sideBar as v2SideBar } from '../src/v2/.vitepress/v2.config.ts';
-
+import Unocss from 'unocss/vite'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -17,6 +17,10 @@ export default defineConfig({
   cleanUrls: true,
 
   vite: {
+    plugins: [
+      Unocss(),
+    ],
+
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '..')
@@ -26,7 +30,7 @@ export default defineConfig({
 
   themeConfig: {
 
-    
+
 
     // https://vitepress.dev/reference/default-theme-config
     nav: [
