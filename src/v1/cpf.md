@@ -9,7 +9,38 @@ Validador para números de CPF (Cadastro de Pessoas Físicas).
 
 ## Validador
 
-<CPFValidator />
+<Validator v-model="cpfValidate"  :handle="handleValidation" 
+  placeholder="Digite um CPF para validar"
+  success-message='CPF Válido'
+  error-message='CPF Inválido'
+/>
+
+```js-vue
+
+// Importação direta
+import { isCPF } from 'validation-br';
+
+// Valida
+isCPF("{{cpfNumber}}"); //-> {{states.validate}}
+
+// OU
+// Importação de submódulos
+import {
+  validate,
+  validateOrFail,
+  mask,
+  normalize,
+} from 'validation-br/dist/cpf';
+
+// Valida
+validate("{{cpfNumber}}"); //-> {{states.validate}}
+// Lança exceção caso o número seja inválido
+validateOrFail("{{cpfNumber}}"); //-> {{states.validate || 'Throws ValidationBRException'}}
+// Aplica uma máscara
+mask("{{cpfNumber}}"); // -> "{{states.mask}}"
+// Normalize o número do documento
+normalize("{{cpfNumber}}"); // -> "{{states.normalize}}"
+```
 
 ## Gerador
 
@@ -18,9 +49,8 @@ Validador para números de CPF (Cadastro de Pessoas Físicas).
 <MockGenerator
 v-model="cpfData"
 :config="config"
-@generate="handleGenerate"
->
-  <template v-if=mockedCpf #result>{{mockedCpf}}</template>
+@generate="handleGenerate">
+<template v-if=mockedCpf #result>{{mockedCpf}}</template>
 </MockGenerator>
 
 **Código**
@@ -29,19 +59,18 @@ v-model="cpfData"
 // Importa a função
 import {fake} from 'validation-br/dist/cpf'
 // Usa
-fake({{cpfData.withMask}});
+fake({{cpfData.withMask}}); // -> "{{mockedCpf}}"
 ```
 
-{{cpfData}}
 
 ## Como usar?
 
 ### Importação direta
 
-```js
-import { isCPF } from "validation-br";
+```ts
+import { isCPF } from 'validation-br';
 
-const result = isCPF("280.012.389-38"); // -> true
+const result = isCPF('280.012.389-38'); // -> true
 ```
 
 ### Importação de submódulos
@@ -55,13 +84,13 @@ import {
   normalize,
   fake,
   validateOrFail,
-} from "validation-br/dist/cpf";
+} from 'validation-br/dist/cpf';
 
 // Valida
-validate("01234567890"); //-> true
+validate('01234567890'); //-> true
 
 // Lança exceção caso o número seja inválido
-validateOrFail("01234567890"); //-> true
+validateOrFail('01234567890'); //-> true
 
 // Número fake sem máscara
 fake(); // -> 01234567891
@@ -70,13 +99,13 @@ fake(); // -> 01234567891
 fake(true); // -> 012.345.678-91
 
 // Aplica uma máscara
-mask("01234567890"); // -> 012.345.678-90
+mask('01234567890'); // -> 012.345.678-90
 
 // Normalize o número do documento
-normalize("012.345.678-90"); // -> 01234567890
+normalize('012.345.678-90'); // -> 01234567890
 
 // Calcula o DV
-dv("012345678"); // -> '90'
+dv('012345678'); // -> '90'
 ```
 
 ## Como é o Cálculo? <Badge type="info" text="^1.9.0" />
@@ -136,35 +165,37 @@ dv("012345678"); // -> '90'
   import CPFValidator from '@/src/components/cpf-validate-form.vue'
   import CPFGenerator from '@/src/components/cpf-generator.vue'
   import MockGenerator from '@/src/components/mock/generator.vue'
+  import Validator from '@/src/components/validator/validator.vue'
   import {MockFieldCheckbox, MockFieldSelect} from '@/src/components/mock/field.interface.ts'
-  import {fake} from 'validation-br/dist/cpf';
-  import {ref} from 'vue'
-
-  // const generatorCheckboxes: IGeneratorCheckboxItem[] = [
-  //   { text: 'Gerar com pontuação', varName: 'withMask', value: false,  },
-  // ]
-  // function onClickGenerator(){
-  //   fake()
-  // }
-  
+  import {fake, validate, mask, normalize} from 'validation-br/dist/cpf';
+  import {ref, computed} from 'vue'
+ 
 interface CpfParams { withMask: boolean }
 const cpfData = ref<CpfParams>({ withMask: false });
 const mockedCpf = ref<string>('')
+const cpfValidate = ref<string|undefined>();
 
 const config = [
-  new MockFieldCheckbox('withMask', 'Com máscara'),
-  new MockFieldSelect('uf', 'estado', ['rn', 'sp'])
-  // new MockFieldCheckbox('meupa', 'tabaco'),
-  // { key: 'withMask', label: 'Com máscara', value: false },
-  // { key: 'alpha', label: 'Alfanumérico', value: false },
+  new MockFieldCheckbox('withMask', 'Com máscara')
 ];
 
 function handleGenerate(data: CpfParams) {
-  // O TS sabe que data.withMask existe e é boolean
   mockedCpf.value = fake(data.withMask);
-  console.log(mockedCpf.value);
 }
 
+function handleValidation() {
+  return validate(cpfValidate.value);
+}
+
+const cpfNumber = computed(() => cpfValidate.value || '01234567890')
+
+const states = computed(() => {
+  return {
+    validate: validate(cpfNumber.value),
+    mask:  mask(cpfNumber.value) ,
+    normalize:  normalize(cpfNumber.value) ,
+  }
+})
 
 
 </script>
