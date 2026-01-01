@@ -14,6 +14,10 @@ export default defineConfig({
   title: Shared.name,
   description: Shared.description,
   cleanUrls: true,
+  head: [
+    // <meta name="google-adsense-account" content="ca-pub-9643986318610515">
+    ['meta', { name: 'google-adsense-account', content: 'ca-pub-9643986318610515' }],
+  ],
 
   vite: {
     plugins: [
