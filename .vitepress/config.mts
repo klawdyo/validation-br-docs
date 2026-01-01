@@ -1,5 +1,5 @@
 import { defineConfig } from 'vitepress';
-import Shared  from '../.vitepress/shared';
+import Shared from '../.vitepress/shared';
 import path from 'path';
 
 import { sideBar as v1SideBar } from '../src/v1/.vitepress/v1.config.ts';
@@ -17,6 +17,18 @@ export default defineConfig({
   head: [
     // <meta name="google-adsense-account" content="ca-pub-9643986318610515">
     ['meta', { name: 'google-adsense-account', content: 'ca-pub-9643986318610515' }],
+    [
+      'script',
+      { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=GTM-W528C3M7' }
+    ],
+    [
+      'script',
+      {},
+      `window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GTM-W528C3M7');`
+    ]
   ],
 
   vite: {
