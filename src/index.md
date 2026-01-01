@@ -5,10 +5,9 @@ layout: home
 hero:
   name: "validation-br"
   text: "Validação de documentos do Brasil"
-  # tagline: v1.6.0
   actions:
     - theme: brand
-      text: v1.6.0 (current)
+      text: v1.6.1 (current)
       link: /v1
     - theme: alt
       text: v2.0.0 (next)

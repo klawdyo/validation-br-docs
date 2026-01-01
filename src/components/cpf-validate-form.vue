@@ -2,9 +2,9 @@
   <div class="vp-doc">
     <div class="input-group">
       <input v-model="inputValue" type="text" placeholder="Digite um CPF pra validar" class="vp-input" />
-      <button @click="handleClick" class="vp-button">
+      <!-- <button @click="handleClick" class="vp-button">
         Validar
-      </button>
+      </button> -->
     </div>
 
     <p v-if="errorMessage" class="error-message">
@@ -13,9 +13,9 @@
     <p v-else-if="successMessage" class="success-message">
       {{ successMessage }}
     </p>
-    <p v-else>
+    <!-- <p v-else style="color: var(--vp-c-text-3); font-style: italic;">
       Digite um CPF
-    </p>
+    </p> -->
 
 
   </div>
