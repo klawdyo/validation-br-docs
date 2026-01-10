@@ -35,7 +35,7 @@ import {
 // Valida
 validate("{{cpfNumber}}"); //-> {{states.validate}}
 // Lança exceção caso o número seja inválido
-validateOrFail("{{cpfNumber}}"); //-> {{states.validate || 'Throws ValidationBRException'}}
+validateOrFail("{{cpfNumber}}"); //-> {{states.validate || '⚠️ Throws ValidationBRException'}}
 // Aplica uma máscara
 mask("{{cpfNumber}}"); // -> "{{states.mask}}"
 // Normalize o número do documento
