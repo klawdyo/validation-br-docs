@@ -7,11 +7,11 @@ hero:
   text: "Validação de documentos do Brasil"
   actions:
     - theme: brand
-      text: v1.6.1 (current)
+      text: v1.6.4 (current)
       link: /v1
-    - theme: alt
-      text: v2.0.0 (next)
-      link: /v2/
+    # - theme: alt
+    #   text: v2.0.0 (next)
+    #   link: /v2/
 
 features:
   - icon: 🥇

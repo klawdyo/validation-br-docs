@@ -55,7 +55,7 @@ export default defineConfig({
         text: 'Versão',
         items: [
           { text: Versions.current, link: '/v1/', },
-          { text: Versions.next, link: '/v2/' },
+          // { text: Versions.next, link: '/v2/' },
         ]
       },
     ],
@@ -65,12 +65,7 @@ export default defineConfig({
 
     sidebar: {
       '/v1': v1SideBar,
-      // '/v2
-      // '/v1': [
-      //   // { text: path.resolve(__dirname, '..', '.vitepress'), link: '/v2/install' },
-      //   ...v1SideBar
-      // ],
-      '/v2': v2SideBar,
+      // '/v2': v2SideBar,
     },
 
     editLink: {

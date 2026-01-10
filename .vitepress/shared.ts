@@ -9,7 +9,7 @@ export default class Shared {
 
   // // Versões
   // static versions = {
-  //   current: '1.6.1 (current)',
+  //   current: '1.6.4 (current)',
   //   next: '2.0.0 (next)',
   // };
 }

@@ -1,9 +1,22 @@
 ---
 layout: doc
 sidebar: true
+lastUpdated: true
 ---
 
-# Documentação da v1
+# v1
+
+## Instalação
+
+```sh
+npm install validation-br
+
+# OR
+
+yarn add validation-br
+
+```
+
 
 ## Validadores
 
