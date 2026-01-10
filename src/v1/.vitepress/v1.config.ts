@@ -13,7 +13,7 @@ export const sideBar: DefaultTheme.SidebarItem[] = [
           { text: 'CPF', link: '/v1/cpf' },
           { text: 'CNPJ', link: '/v1/cnpj' },
           { text: 'CNH', link: '/v1/cnh' },
-          { text: 'Placa (CarPlate)', link: '/v1/carplate' },
+          // { text: 'Placa (CarPlate)', link: '/v1/carplate' },
           { text: 'PIS / PASEP', link: '/v1/pis-pasep' },
           { text: 'NUP17', link: '/v1/nup17' },
           { text: 'Processo Judicial', link: '/v1/judicial-process' },
