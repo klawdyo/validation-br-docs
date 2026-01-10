@@ -26,11 +26,12 @@ export const sideBar: DefaultTheme.SidebarItem[] = [
       {
         text: 'Integração',
         items: [
-          { text: 'Yup', link: '/v1/integrations/yup' },
-          { text: 'Zod', link: '/v1/integrations/zod' },
           { text: 'Class Validator', link: '/v1/integrations/class-validator' },
-          { text: 'Veelidate', link: '/v1/integrations/veelidate' },
-          { text: 'Joi', link: '/v1/integrations/joi' }
+          { text: 'Indicative', link: '/v1/integrations/indicative' },
+          { text: 'Joi', link: '/v1/integrations/joi' },
+          { text: 'Vuelidate', link: '/v1/integrations/vuelidate' },
+          { text: 'Yup', link: '/v1/integrations/yup' },
+          // { text: 'Zod', link: '/v1/integrations/zod' },
         ]
       },
     ]
