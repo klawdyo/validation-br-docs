@@ -13,6 +13,6 @@
     "docs:preview": "vitepress preview"
   },
   "dependencies": {
-    "validation-br": "^1.6.1"
+    "validation-br": "^1.6.3-d"
   }
 }
