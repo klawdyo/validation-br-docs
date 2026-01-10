@@ -168,6 +168,7 @@ dv('012345678'); // -> '90'
   import Validator from '@/src/components/validator/validator.vue'
   import {MockFieldCheckbox, MockFieldSelect} from '@/src/components/mock/field.interface.ts'
   import {fake, validate, mask, normalize} from 'validation-br/dist/cpf';
+  import {isCPF} from 'validation-br';
   import {ref, computed} from 'vue'
  
 interface CpfParams { withMask: boolean }
