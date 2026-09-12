@@ -4,6 +4,7 @@ export default class Shared {
 
   static name = 'Validation BR';
   static description = 'Uma biblioteca para validação de documentos brasileiros.';
+  static url = process.env.DOCS_URL || 'https://validation-br.js.org';
   static github = 'https://github.com/klawdyo/validation-br';
   static npm = 'https://npmjs.com/package/validation-br';
 

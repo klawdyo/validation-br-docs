@@ -14,6 +14,30 @@ export default defineConfig({
   title: Shared.name,
   description: Shared.description,
   cleanUrls: true,
+
+  sitemap: {
+    hostname: Shared.url,
+  },
+
+  transformHead({ page }) {
+    let clean = page.replace(/\.md$/, '');
+    if (clean.endsWith('/index') || clean === 'index') {
+      clean = clean.replace(/(^|\/)index$/, '');
+    }
+
+    // Se for uma página sem v1 e sem v2 (ex: 'cpf', 'install', etc.), a rota canônica é na v2
+    if (!clean.startsWith('v1') && !clean.startsWith('v2') && clean !== '') {
+      clean = `v2/${clean}`;
+    }
+
+    const canonicalPath = clean ? `/${clean}` : '/';
+    const canonicalUrl = `${Shared.url.replace(/\/$/, '')}${canonicalPath}`;
+
+    return [
+      ['link', { rel: 'canonical', href: canonicalUrl }],
+    ];
+  },
+
   head: [
     // <meta name="google-adsense-account" content="ca-pub-9643986318610515">
     ['meta', { name: 'google-adsense-account', content: 'ca-pub-9643986318610515' }],
@@ -54,8 +78,8 @@ export default defineConfig({
       {
         text: 'Versão',
         items: [
-          { text: Versions.current, link: '/v1/', },
-          // { text: Versions.next, link: '/v2/' },
+          { text: Versions.current, link: '/v2/', },
+          { text: Versions.legacy, link: '/v1/', },
         ]
       },
     ],
@@ -64,8 +88,9 @@ export default defineConfig({
 
 
     sidebar: {
-      '/v1': v1SideBar,
-      // '/v2': v2SideBar,
+      '/v1/': v1SideBar,
+      '/v2/': v2SideBar,
+      '/': v2SideBar,
     },
 
     editLink: {
