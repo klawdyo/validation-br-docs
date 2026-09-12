@@ -1,0 +1,59 @@
+/* Look moderno aplicado apenas às páginas /v2 (ver theme-v2 em index.ts) */
+
+.theme-v2 {
+  --v2-radius: 14px;
+  --v2-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+}
+
+.theme-v2 .VPNavBar {
+  backdrop-filter: blur(8px);
+}
+
+.theme-v2 .VPHero .name {
+  background: var(--v2-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.theme-v2 .VPHero .image-bg {
+  background: var(--v2-gradient);
+  opacity: 0.25;
+}
+
+.theme-v2 .VPFeature {
+  border-radius: var(--v2-radius);
+  border: 1px solid var(--vp-c-divider);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-v2 .VPFeature:hover {
+  transform: translateY(-4px);
+  border-color: #8b5cf6;
+  box-shadow: 0 12px 24px -12px rgba(139, 92, 246, 0.4);
+}
+
+.theme-v2 .vp-doc h1 {
+  background: var(--v2-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+.theme-v2 .vp-doc h2 {
+  border-top: 1px solid var(--vp-c-divider);
+  padding-top: 20px;
+  margin-top: 40px;
+}
+
+.theme-v2 div[class*='language-'] {
+  border-radius: var(--v2-radius);
+}
+
+.theme-v2 .vp-doc img {
+  border-radius: var(--v2-radius);
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg-soft);
+  padding: 8px;
+}
