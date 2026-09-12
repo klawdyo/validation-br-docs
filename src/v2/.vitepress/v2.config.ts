@@ -4,6 +4,7 @@ import { DefaultTheme } from 'vitepress';
 export const sideBar: DefaultTheme.SidebarItem[] = [
       { text: 'Home', link: '/v2' },
       { text: 'Instalação', link: '/v2/install' },
+      { text: 'Migrando da 1.x', link: '/v2/migration' },
 
       {
         text: 'Documentos',
