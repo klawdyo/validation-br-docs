@@ -13,6 +13,7 @@
     "docs:preview": "vitepress preview"
   },
   "dependencies": {
-    "validation-br": "^1.6.3-d"
+    "validation-br": "^1.6.3-d",
+    "validation-br-v2": "file:../lib"
   }
 }
