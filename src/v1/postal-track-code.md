@@ -1,135 +1,69 @@
 ---
-layout: doc
-sidebar: true
+outline: deep
 ---
 
 # Código de Rastreamento Postal
 
-Valida um código de rastreamento de objetos postais.
+Validador para códigos de rastreamento dos Correios no formato `XX000000000BR` (ex.: Sedex, carta registrada) — 13 caracteres.
 
-## Validador
-
-<Validator v-model="postalCodeValidate"  :handle="handleValidation" 
-  placeholder="Digite um Código de Rastreamento Postal para validar"
-  success-message='Código de Rastreamento Postal Válido'
-  error-message='Código de Rastreamento Postal Inválido'
+<DocPlayground
+  placeholder="Digite um código para validar"
+  valid-label="Código válido"
+  invalid-label="Código inválido"
+  generate-label="Gerar código de exemplo"
+  :validate="handleValidate"
+  :generate="handleGenerate"
+  :show-mask-option="false"
 />
 
-```js-vue
+## Exemplos (API)
+
+```js
 // Importação direta
 import { isPostalCode } from 'validation-br';
 
-// Valida
-isPostalCode("{{postalCodeNumber}}"); //-> {{states.validate}}
+isPostalCode('XF892043372BR'); // -> true
 
-// OU
-// Importação de submódulos
-import {
-  validate,
-  validateOrFail,
-  mask,
-  normalize,
-} from 'validation-br/dist/postalCode';
+// Importação de submódulo
+import { validate, validateOrFail, mask, normalize, fake, dv } from 'validation-br/dist/postalCode';
 
-// Valida
-validate("{{postalCodeNumber}}"); //-> {{states.validate}}
-// Lança exceção caso o número seja inválido
-validateOrFail("{{postalCodeNumber}}"); //-> {{states.validate || '⚠️ Throws ValidationBRException'}}
-// Aplica uma máscara
-mask("{{postalCodeNumber}}"); // -> "{{states.mask}}"
-// Normalize o número do documento
-normalize("{{postalCodeNumber}}"); // -> "{{states.normalize}}"
+validate('XF892043372BR'); // -> true
+validateOrFail('XF892043372BR'); // -> true (lança ValidationBRError se inválido)
+normalize('xf892043372br'); // -> 'XF892043372BR'
+fake(); // -> código fake válido (não recebe parâmetro de máscara)
+
+// dv() recebe os 8 dígitos numéricos centrais
+dv('89204337'); // -> '2'
 ```
 
-## Gerador
+> `mask()` é apenas um alias de `normalize()`: o código não tem separadores, só normaliza para maiúsculas.
 
-<MockGenerator
-v-model="postalCodeData"
-:config="config"
-@generate="handleGenerate">
-<template v-if=mockedPostalCode #result>{{mockedPostalCode}}</template>
-</MockGenerator>
+## Como o cálculo é feito
 
-**Código**
+O código tem 13 caracteres: 2 letras identificando o tipo do objeto,
+8 dígitos sequenciais, 1 dígito verificador (DV) e 2 letras do país de
+origem (`BR`).
 
-```js-vue
-// Importa a função
-import {fake} from 'validation-br/dist/postalCode'
-// Usa
-fake({{postalCodeData.withMask}}); // -> "{{mockedPostalCode}}"
-```
+<img src="/diagrams/postal-track-code-check-digits.svg" alt="Cálculo passo a passo do dígito verificador do código de rastreamento postal" />
 
-## Como usar?
+> Se o resto da divisão por 11 for 0, o DV é `5`; se for 1, o DV é `0`.
 
-### Importação direta
+## Integrações
 
-```ts
-import { isPostalCode } from 'validation-br';
-isPostalCode('PN718252423BR'); //-> true
-```
+- [Class Validator](/v1/integrations/class-validator)
+- [Indicative](/v1/integrations/indicative)
+- [Joi](/v1/integrations/joi)
+- [Vuelidate](/v1/integrations/vuelidate)
+- [Yup](/v1/integrations/yup)
 
-### Importação de submódulos
-
-```ts
-// Importação do submódulo
-import {
-  validate,
-  mask,
-  dv,
-  normalize,
-  fake,
-  validateOrFail,
-} from 'validation-br/dist/postalCode';
-
-// Valida
-validate('PN718252423BR'); //-> true
-validateOrFail('PN718252423BR'); //-> true
-
-// Número fake com e sem máscara.
-fake(); // -> PN718252423BR
-fake(true); // -> PN718252423BR
-
-// Aplica uma máscara
-// No caso de PostalCode, a máscara apenas coloca as letras em maiúsculas, servindo como normalização
-mask('pn718252423br'); // -> PN718252423BR
-
-// Normalize o número do documento
-normalize('pn718252423br'); // -> PN718252423BR
-
-// Calcula o DV
-dv('PN718252423BR'); // -> '3'
-```
 <script setup lang="ts">
-  import MockGenerator from '@/src/components/mock/generator.vue'
-  import Validator from '@/src/components/validator/validator.vue'
-  import {MockFieldCheckbox} from '@/src/components/mock/field.interface.ts'
-  import {fake, validate, mask, normalize} from 'validation-br/dist/postalCode';
-  import {ref, computed} from 'vue'
- 
-  interface PostalCodeParams { withMask: boolean }
-  const postalCodeData = ref<PostalCodeParams>({ withMask: false });
-  const mockedPostalCode = ref<string>('')
-  const postalCodeValidate = ref<string|undefined>();
+import { validate, fake } from 'validation-br/dist/postalCode'
 
-  const config = [
-    new MockFieldCheckbox('withMask', 'Com máscara')
-  ];
+function handleValidate(value: string) {
+  return validate(value)
+}
 
-  function handleGenerate(data: PostalCodeParams) {
-    mockedPostalCode.value = fake(data.withMask);
-  }
-
-  function handleValidation() {
-    return validate(postalCodeValidate.value);
-  }
-
-  const postalCodeNumber = computed(() => postalCodeValidate.value || 'PN718252423BR')
-
-  const states = computed(() => {
-    return {
-      validate: validate(postalCodeNumber.value),
-      mask:  mask(postalCodeNumber.value) ,
-      normalize:  normalize(postalCodeNumber.value) ,
-    }
-  })
+function handleGenerate() {
+  return fake()
+}
 </script>

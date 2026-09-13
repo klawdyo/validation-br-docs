@@ -1,139 +1,66 @@
 ---
-layout: doc
-sidebar: true
+outline: deep
 ---
 
 # CNH
 
-Validador para números de CNH (Carteira Nacional de Habilitação).
+Validador para números de CNH (Carteira Nacional de Habilitação) — 11 dígitos, sendo os 2 últimos os dígitos verificadores.
 
-## Validador
-
-<Validator v-model="cnhValidate"  :handle="handleValidation" 
+<DocPlayground
   placeholder="Digite uma CNH para validar"
-  success-message='CNH Válida'
-  error-message='CNH Inválida'
+  valid-label="CNH válida"
+  invalid-label="CNH inválida"
+  generate-label="Gerar CNH de exemplo"
+  :validate="handleValidate"
+  :generate="handleGenerate"
 />
 
-```js-vue
+## Exemplos (API)
+
+```js
 // Importação direta
 import { isCNH } from 'validation-br';
 
-// Valida
-isCNH("{{cnhNumber}}"); //-> {{states.validate}}
+isCNH('653.277.841-39'); // -> true
 
-// OU
-// Importação de submódulos
-import {
-  validate,
-  validateOrFail,
-  mask,
-  normalize,
-} from 'validation-br/dist/cnh';
+// Importação de submódulo
+import { validate, validateOrFail, mask, normalize, fake, dv } from 'validation-br/dist/cnh';
 
-// Valida
-validate("{{cnhNumber}}"); //-> {{states.validate}}
-// Lança exceção caso o número seja inválido
-validateOrFail("{{cnhNumber}}"); //-> {{states.validate || '⚠️ Throws ValidationBRException'}}
-// Aplica uma máscara
-mask("{{cnhNumber}}"); // -> "{{states.mask}}"
-// Normalize o número do documento
-normalize("{{cnhNumber}}"); // -> "{{states.normalize}}"
+validate('65327784139'); // -> true
+validateOrFail('65327784139'); // -> true (lança ValidationBRError se inválido)
+mask('65327784139'); // -> '653277841-39'
+normalize('653277841-39'); // -> '65327784139'
+fake(); // -> número fake válido, sem máscara
+fake(true); // -> número fake válido, com máscara
+dv('653277841'); // -> '39'
 ```
 
-## Gerador
+## Como o cálculo é feito
 
-<MockGenerator
-v-model="cnhData"
-:config="config"
-@generate="handleGenerate">
-<template v-if=mockedCnh #result>{{mockedCnh}}</template>
-</MockGenerator>
+A CNH tem 11 caracteres: os 9 primeiros são um número sequencial e os
+2 últimos são os dígitos verificadores (DV), calculados em duas
+etapas — o segundo cálculo já incorpora o DV1 encontrado na primeira.
 
-**Código**
+<img src="/diagrams/cnh-check-digits.svg" alt="Cálculo passo a passo dos dígitos verificadores da CNH" />
 
-```js-vue
-// Importa a função
-import {fake} from 'validation-br/dist/cnh'
-// Usa
-fake({{cnhData.withMask}}); // -> "{{mockedCnh}}"
-```
+> Se o resto da divisão por 11 for 10, o dígito verificador é considerado `0`.
 
-## Como usar?
+## Integrações
 
-### Importação direta
+- [Class Validator](/v1/integrations/class-validator)
+- [Indicative](/v1/integrations/indicative)
+- [Joi](/v1/integrations/joi)
+- [Vuelidate](/v1/integrations/vuelidate)
+- [Yup](/v1/integrations/yup)
 
-```ts
-import { isCNH } from 'validation-br';
-
-const result = isCNH('69044271146'); // -> true
-```
-
-### Importação de submódulos
-
-```ts
-// Importação do submódulo
-import {
-  validate,
-  mask,
-  dv,
-  normalize,
-  fake,
-  validateOrFail,
-} from 'validation-br/dist/cnh';
-
-// Valida
-validate('624729276-37'); //-> true
-
-// Lança exceção caso o número seja inválido
-validateOrFail('62472927637'); //-> true
-
-// Número fake sem máscara
-fake(); // -> 62472927637
-
-// Número fake com máscara
-fake(true); // -> 624729276-37
-
-// Aplica uma máscara
-mask('62472927637'); // -> 624729276-37
-
-// Normalize o número do documento
-normalize('624729276-37'); // -> 62472927637
-
-// Calcula o DV
-dv('624729276'); // -> '37'
-```
 <script setup lang="ts">
-  import MockGenerator from '@/src/components/mock/generator.vue'
-  import Validator from '@/src/components/validator/validator.vue'
-  import {MockFieldCheckbox} from '@/src/components/mock/field.interface.ts'
-  import {fake, validate, mask, normalize} from 'validation-br/dist/cnh';
-  import {ref, computed} from 'vue'
- 
-  interface CnhParams { withMask: boolean }
-  const cnhData = ref<CnhParams>({ withMask: false });
-  const mockedCnh = ref<string>('')
-  const cnhValidate = ref<string|undefined>();
+import { validate, fake } from 'validation-br/dist/cnh'
 
-  const config = [
-    new MockFieldCheckbox('withMask', 'Com máscara')
-  ];
+function handleValidate(value: string) {
+  return validate(value)
+}
 
-  function handleGenerate(data: CnhParams) {
-    mockedCnh.value = fake(data.withMask);
-  }
-
-  function handleValidation() {
-    return validate(cnhValidate.value);
-  }
-
-  const cnhNumber = computed(() => cnhValidate.value || '69044271146')
-
-  const states = computed(() => {
-    return {
-      validate: validate(cnhNumber.value),
-      mask:  mask(cnhNumber.value) ,
-      normalize:  normalize(cnhNumber.value) ,
-    }
-  })
+function handleGenerate(withMask: boolean) {
+  return fake(withMask)
+}
 </script>

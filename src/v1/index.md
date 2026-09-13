@@ -20,12 +20,13 @@ yarn add validation-br
 
 ## Validadores
 
-- [CNH](./cnh.md)
-- [CNPJ](./cnpj.md)
 - [CPF](./cpf.md)
-- [Processo Judicial](./judicial-process.md)
-- [NUP-17](./nup17.md)
+- [CNPJ](./cnpj.md)
+- [CNH](./cnh.md)
+- [Telefone](./phone.md)
 - [PIS/PASEP](./pis-pasep.md)
-- [Código de Rastreamento Postal](./postal-track-code.md)
+- [NUP-17](./nup17.md)
+- [Processo Judicial](./judicial-process.md)
 - [Renavam](./renavam.md)
 - [Título de Eleitor](./tituloEleitor.md)
+- [Código de Rastreamento Postal](./postal-track-code.md)

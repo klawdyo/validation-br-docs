@@ -1,134 +1,81 @@
 ---
-layout: doc
-sidebar: true
+outline: deep
 ---
 
 # Processo Judicial
 
-Valida números de processo da esfera judicial.
+Validador para o número unificado de processos judiciais (Resolução CNJ nº 65/2008) — 20 caracteres, incluindo os 2 dígitos verificadores.
 
-## Validador
-
-<Validator v-model="judicialProcessValidate"  :handle="handleValidation" 
-  placeholder="Digite um Processo Judicial para validar"
-  success-message='Processo Judicial Válido'
-  error-message='Processo Judicial Inválido'
+<DocPlayground
+  placeholder="Digite um número de processo para validar"
+  valid-label="Número válido"
+  invalid-label="Número inválido"
+  generate-label="Gerar processo de exemplo"
+  :validate="handleValidate"
+  :generate="handleGenerate"
 />
 
-```js-vue
+## Exemplos (API)
+
+```js
 // Importação direta
 import { isJudicialProcess } from 'validation-br';
 
-// Valida
-isJudicialProcess("{{judicialProcessNumber}}"); //-> {{states.validate}}
+isJudicialProcess('4632341-46.2025.7.25.9556'); // -> true
 
-// OU
-// Importação de submódulos
-import {
-  validate,
-  validateOrFail,
-  mask,
-  normalize,
-} from 'validation-br/dist/judicialProcess';
+// Importação de submódulo
+import { validate, validateOrFail, mask, normalize, fake, dv } from 'validation-br/dist/judicialProcess';
 
-// Valida
-validate("{{judicialProcessNumber}}"); //-> {{states.validate}}
-// Lança exceção caso o número seja inválido
-validateOrFail("{{judicialProcessNumber}}"); //-> {{states.validate || '⚠️ Throws ValidationBRException'}}
-// Aplica uma máscara
-mask("{{judicialProcessNumber}}"); // -> "{{states.mask}}"
-// Normalize o número do documento
-normalize("{{judicialProcessNumber}}"); // -> "{{states.normalize}}"
+validate('46323414620257259556'); // -> true
+validateOrFail('46323414620257259556'); // -> true (lança ValidationBRError se inválido)
+mask('46323414620257259556'); // -> '4632341-46.2025.7.25.9556'
+normalize('4632341-46.2025.7.25.9556'); // -> '46323414620257259556'
+fake(); // -> número fake válido, sem máscara
+fake(true); // -> número fake válido, com máscara
+
+// dv() recebe o número sem os 2 dígitos verificadores
+dv('463234120257259556'); // -> '46'
 ```
 
-## Gerador
+## Como o cálculo é feito
 
-<MockGenerator
-v-model="judicialProcessData"
-:config="config"
-@generate="handleGenerate">
-<template v-if=mockedJudicialProcess #result>{{mockedJudicialProcess}}</template>
-</MockGenerator>
+O número tem 20 caracteres: 7 de sequencial, 2 de DV, 4 de ano, 1 do
+órgão do Poder Judiciário, 2 do tribunal e 4 da unidade de origem. O
+DV é calculado pelo algoritmo Módulo 97 de Base 10 (ISO 7064), em 3
+etapas que evitam estourar o limite de inteiro do JavaScript.
 
-**Código**
+<img src="/diagrams/judicial-process-check-digits.svg" alt="Cálculo passo a passo do dígito verificador do Processo Judicial" />
 
-```js-vue
-// Importa a função
-import {fake} from 'validation-br/dist/judicialProcess'
-// Usa
-fake({{judicialProcessData.withMask}}); // -> "{{mockedJudicialProcess}}"
-```
+**Órgãos do Poder Judiciário (1º dígito após o ano):**
 
-## Como usar?
+| Código | Órgão |
+| --- | --- |
+| 1 | Supremo Tribunal Federal |
+| 2 | Conselho Nacional de Justiça |
+| 3 | Superior Tribunal de Justiça |
+| 4 | Justiça Federal |
+| 5 | Justiça do Trabalho |
+| 6 | Justiça Eleitoral |
+| 7 | Justiça Militar da União |
+| 8 | Justiça dos Estados e do Distrito Federal e Territórios |
+| 9 | Justiça Militar Estadual |
 
-### Importação direta
+## Integrações
 
-```ts
-import { isJudicialProcess } from 'validation-br';
-isJudicialProcess('20802520125150049'); //-> true
-```
+- [Class Validator](/v1/integrations/class-validator)
+- [Indicative](/v1/integrations/indicative)
+- [Joi](/v1/integrations/joi)
+- [Vuelidate](/v1/integrations/vuelidate)
+- [Yup](/v1/integrations/yup)
 
-### Importação de submódulos
-
-```ts
-// Importação do submódulo
-import {
-  validate,
-  mask,
-  dv,
-  normalize,
-  fake,
-  validateOrFail,
-} from 'validation-br/dist/judicialProcess';
-
-validate('00110060720168200100'); //-> true
-validateOrFail('00110060720168200100'); //-> true
-
-// Número fake com e sem máscara
-fake(); // -> 00110060720168200100
-fake(true); // -> 0011006-07.2016.8.20.0100
-
-// Aplica uma máscara
-mask('00110060720168200100'); // -> 0011006-07.2016.8.20.0100
-
-// Normalize o número do documento
-normalize('0011006-07.2016.8.20.0100'); // -> 00110060720168200100
-
-// Calcula o DV.
-// Obs.: Antes do cálculo, é necessário que o número do processo não possua o dígito verificador para que o resultado seja correto. Isso é necessário pois o DV fica no meio da numeração, na posição 8 e 9.
-dv('001100620168200100'); // -> '07'
-```
 <script setup lang="ts">
-  import MockGenerator from '@/src/components/mock/generator.vue'
-  import Validator from '@/src/components/validator/validator.vue'
-  import {MockFieldCheckbox} from '@/src/components/mock/field.interface.ts'
-  import {fake, validate, mask, normalize} from 'validation-br/dist/judicialProcess';
-  import {ref, computed} from 'vue'
- 
-  interface JudicialProcessParams { withMask: boolean }
-  const judicialProcessData = ref<JudicialProcessParams>({ withMask: false });
-  const mockedJudicialProcess = ref<string>('')
-  const judicialProcessValidate = ref<string|undefined>();
+import { validate, fake } from 'validation-br/dist/judicialProcess'
 
-  const config = [
-    new MockFieldCheckbox('withMask', 'Com máscara')
-  ];
+function handleValidate(value: string) {
+  return validate(value)
+}
 
-  function handleGenerate(data: JudicialProcessParams) {
-    mockedJudicialProcess.value = fake(data.withMask);
-  }
-
-  function handleValidation() {
-    return validate(judicialProcessValidate.value);
-  }
-
-  const judicialProcessNumber = computed(() => judicialProcessValidate.value || '20802520125150049')
-
-  const states = computed(() => {
-    return {
-      validate: validate(judicialProcessNumber.value),
-      mask:  mask(judicialProcessNumber.value) ,
-      normalize:  normalize(judicialProcessNumber.value) ,
-    }
-  })
+function handleGenerate(withMask: boolean) {
+  return fake(withMask)
+}
 </script>

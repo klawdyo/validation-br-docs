@@ -1,134 +1,87 @@
 ---
-layout: doc
-sidebar: true
+outline: deep
 ---
 
 # Título de Eleitor
 
-Valida um título eleitoral.
+Validador para números de título de eleitor — 12 dígitos, sendo os dígitos 9-10 a UF de emissão e os 2 últimos os dígitos verificadores.
 
-## Validador
-
-<Validator v-model="tituloEleitorValidate"  :handle="handleValidation" 
-  placeholder="Digite um Título de Eleitor para validar"
-  success-message='Título de Eleitor Válido'
-  error-message='Título de Eleitor Inválido'
+<DocPlayground
+  placeholder="Digite um título de eleitor para validar"
+  valid-label="Título válido"
+  invalid-label="Título inválido"
+  generate-label="Gerar título de exemplo"
+  :validate="handleValidate"
+  :generate="handleGenerate"
 />
 
-```js-vue
+## Exemplos (API)
+
+```js
 // Importação direta
 import { isTituloEleitor } from 'validation-br';
 
-// Valida
-isTituloEleitor("{{tituloEleitorNumber}}"); //-> {{states.validate}}
+isTituloEleitor('0975.6543.2615'); // -> true
 
-// OU
-// Importação de submódulos
-import {
-  validate,
-  validateOrFail,
-  mask,
-  normalize,
-} from 'validation-br/dist/tituloEleitor';
+// Importação de submódulo
+import { validate, validateOrFail, mask, normalize, fake, dv } from 'validation-br/dist/tituloEleitor';
 
-// Valida
-validate("{{tituloEleitorNumber}}"); //-> {{states.validate}}
-// Lança exceção caso o número seja inválido
-validateOrFail("{{tituloEleitorNumber}}"); //-> {{states.validate || '⚠️ Throws ValidationBRException'}}
-// Aplica uma máscara
-mask("{{tituloEleitorNumber}}"); // -> "{{states.mask}}"
-// Normalize o número do documento
-normalize("{{tituloEleitorNumber}}"); // -> "{{states.normalize}}"
+validate('097565432615'); // -> true
+validateOrFail('097565432615'); // -> true (lança ValidationBRError se inválido)
+mask('097565432615'); // -> '0975.6543.2615'
+normalize('0975.6543.2615'); // -> '097565432615'
+fake(); // -> número fake válido, sem máscara
+fake(true); // -> número fake válido, com máscara
+
+// dv() recebe os 8 dígitos sequenciais + os 2 da UF
+dv('0975654326'); // -> '15'
 ```
 
-## Gerador
+## Como o cálculo é feito
 
-<MockGenerator
-v-model="tituloEleitorData"
-:config="config"
-@generate="handleGenerate">
-<template v-if=mockedTituloEleitor #result>{{mockedTituloEleitor}}</template>
-</MockGenerator>
+O título tem 12 dígitos: os 8 primeiros são um número sequencial, os
+2 seguintes identificam a UF de emissão, e os 2 últimos são os
+dígitos verificadores (DV), calculados em duas etapas.
 
-**Código**
+<img src="/diagrams/titulo-eleitor-check-digits.svg" alt="Cálculo passo a passo dos dígitos verificadores do Título de Eleitor" />
 
-```js-vue
-// Importa a função
-import {fake} from 'validation-br/dist/tituloEleitor'
-// Usa
-fake({{tituloEleitorData.withMask}}); // -> "{{mockedTituloEleitor}}"
-```
+**UF de emissão (dígitos 9-10):**
 
-## Como usar?
+| UF | Estado | UF | Estado |
+| --- | --- | --- | --- |
+| 01 | SP | 15 | PI |
+| 02 | MG | 16 | RN |
+| 03 | RJ | 17 | AL |
+| 04 | RS | 18 | MT |
+| 05 | BA | 19 | MS |
+| 06 | PR | 20 | DF |
+| 07 | CE | 21 | SE |
+| 08 | PE | 22 | AM |
+| 09 | SC | 23 | RO |
+| 10 | GO | 24 | AC |
+| 11 | MA | 25 | AP |
+| 12 | PB | 26 | RR |
+| 13 | PA | 27 | TO |
+| 14 | ES | 28 | Exterior (ZZ) |
 
-### Importação direta
+> Se o resto da divisão por 11 for maior ou igual a 10, o dígito verificador é `0`.
 
-```ts
-import { isTituloEleitor } from 'validation-br';
-isTituloEleitor('743650641660'); //-> true
-```
+## Integrações
 
-### Importação de submódulos
+- [Class Validator](/v1/integrations/class-validator)
+- [Indicative](/v1/integrations/indicative)
+- [Joi](/v1/integrations/joi)
+- [Vuelidate](/v1/integrations/vuelidate)
+- [Yup](/v1/integrations/yup)
 
-```ts
-// Importação do submódulo
-import {
-  validate,
-  mask,
-  dv,
-  normalize,
-  fake,
-  validateOrFail,
-} from 'validation-br/dist/tituloEleitor';
-
-// Valida
-validate('01234567890'); //-> true
-validateOrFail('01234567890'); //-> true
-
-// Número fake com e sem máscara
-fake(); // -> 153016161686
-fake(true); // -> 1530.1616.1686
-
-// Normalize o número do documento
-normalize('1530.1616.1686'); // -> 153016161686
-
-// Aplica uma máscara
-mask('525028881694'); // -> 5250.2888.1694
-
-// Calcula o DV
-dv('5250288816'); // -> '94'
-```
 <script setup lang="ts">
-  import MockGenerator from '@/src/components/mock/generator.vue'
-  import Validator from '@/src/components/validator/validator.vue'
-  import {MockFieldCheckbox} from '@/src/components/mock/field.interface.ts'
-  import {fake, validate, mask, normalize} from 'validation-br/dist/tituloEleitor';
-  import {ref, computed} from 'vue'
- 
-  interface TituloEleitorParams { withMask: boolean }
-  const tituloEleitorData = ref<TituloEleitorParams>({ withMask: false });
-  const mockedTituloEleitor = ref<string>('')
-  const tituloEleitorValidate = ref<string|undefined>();
+import { validate, fake } from 'validation-br/dist/tituloEleitor'
 
-  const config = [
-    new MockFieldCheckbox('withMask', 'Com máscara')
-  ];
+function handleValidate(value: string) {
+  return validate(value)
+}
 
-  function handleGenerate(data: TituloEleitorParams) {
-    mockedTituloEleitor.value = fake(data.withMask);
-  }
-
-  function handleValidation() {
-    return validate(tituloEleitorValidate.value);
-  }
-
-  const tituloEleitorNumber = computed(() => tituloEleitorValidate.value || '743650641660')
-
-  const states = computed(() => {
-    return {
-      validate: validate(tituloEleitorNumber.value),
-      mask:  mask(tituloEleitorNumber.value) ,
-      normalize:  normalize(tituloEleitorNumber.value) ,
-    }
-  })
+function handleGenerate(withMask: boolean) {
+  return fake(withMask)
+}
 </script>

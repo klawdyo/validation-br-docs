@@ -1,134 +1,66 @@
 ---
-layout: doc
-sidebar: true
+outline: deep
 ---
 
-# Renavam
+# RENAVAM
 
-Valida o número de um RENAVAM.
+RENAVAM é o registro nacional de um veículo no DETRAN — 11 caracteres, sendo o último o dígito verificador.
 
-## Validador
-
-<Validator v-model="renavamValidate"  :handle="handleValidation" 
-  placeholder="Digite um Renavam para validar"
-  success-message='Renavam Válido'
-  error-message='Renavam Inválido'
+<DocPlayground
+  placeholder="Digite um RENAVAM para validar"
+  valid-label="RENAVAM válido"
+  invalid-label="RENAVAM inválido"
+  generate-label="Gerar RENAVAM de exemplo"
+  :validate="handleValidate"
+  :generate="handleGenerate"
 />
 
-```js-vue
+## Exemplos (API)
+
+```js
 // Importação direta
 import { isRenavam } from 'validation-br';
 
-// Valida
-isRenavam("{{renavamNumber}}"); //-> {{states.validate}}
+isRenavam('0898129050-2'); // -> true
 
-// OU
-// Importação de submódulos
-import {
-  validate,
-  validateOrFail,
-  mask,
-  normalize,
-} from 'validation-br/dist/renavam';
+// Importação de submódulo
+import { validate, validateOrFail, mask, normalize, fake, dv } from 'validation-br/dist/renavam';
 
-// Valida
-validate("{{renavamNumber}}"); //-> {{states.validate}}
-// Lança exceção caso o número seja inválido
-validateOrFail("{{renavamNumber}}"); //-> {{states.validate || '⚠️ Throws ValidationBRException'}}
-// Aplica uma máscara
-mask("{{renavamNumber}}"); // -> "{{states.mask}}"
-// Normalize o número do documento
-normalize("{{renavamNumber}}"); // -> "{{states.normalize}}"
+validate('08981290502'); // -> true
+validateOrFail('08981290502'); // -> true (lança ValidationBRError se inválido)
+mask('08981290502'); // -> '0898129050-2'
+normalize('0898129050-2'); // -> '08981290502'
+fake(); // -> número fake válido, sem máscara
+fake(true); // -> número fake válido, com máscara
+dv('0898129050'); // -> '2'
 ```
 
-## Gerador
+## Como o cálculo é feito
 
-<MockGenerator
-v-model="renavamData"
-:config="config"
-@generate="handleGenerate">
-<template v-if=mockedRenavam #result>{{mockedRenavam}}</template>
-</MockGenerator>
+O RENAVAM tem 11 caracteres: os 10 primeiros são a numeração e o 11º é
+o dígito verificador. A soma ponderada dos 10 dígitos é multiplicada
+por 10 antes de aplicar o módulo 11, e o DV é o **resto direto** dessa
+divisão (não `11 - resto` como no CPF/CNPJ) — se o resto for maior ou
+igual a 10, o DV vira 0.
 
-**Código**
+<img src="/diagrams/renavam-check-digits.svg" alt="Cálculo passo a passo do dígito verificador do RENAVAM" />
 
-```js-vue
-// Importa a função
-import {fake} from 'validation-br/dist/renavam'
-// Usa
-fake({{renavamData.withMask}}); // -> "{{mockedRenavam}}"
-```
+## Integrações
 
-## Como usar?
+- [Class Validator](/v1/integrations/class-validator)
+- [Indicative](/v1/integrations/indicative)
+- [Joi](/v1/integrations/joi)
+- [Vuelidate](/v1/integrations/vuelidate)
+- [Yup](/v1/integrations/yup)
 
-### Importação direta
-
-```ts
-import { isRenavam } from 'validation-br';
-isRenavam('14283256656'); //-> true
-```
-
-### Importação de submódulos
-
-```ts
-// Importação do submódulo
-import {
-  validate,
-  mask,
-  dv,
-  normalize,
-  fake,
-  validateOrFail,
-} from 'validation-br/dist/renavam';
-
-// Valida
-validate('95059845976'); //-> true
-validateOrFail('95059845976'); //-> true
-
-// Número fake com e sem máscara
-fake(); // -> 95059845976
-fake(true); // -> 9505984597-6
-
-// Normaliza o número do documento
-normalize('9505984597-6'); // -> 95059845976
-
-// Aplica uma máscara
-mask('95059845976'); // -> 9505984597-6
-
-// Calcula o DV
-dv('950598459'); // -> '76'
-```
 <script setup lang="ts">
-  import MockGenerator from '@/src/components/mock/generator.vue'
-  import Validator from '@/src/components/validator/validator.vue'
-  import {MockFieldCheckbox} from '@/src/components/mock/field.interface.ts'
-  import {fake, validate, mask, normalize} from 'validation-br/dist/renavam';
-  import {ref, computed} from 'vue'
- 
-  interface RenavamParams { withMask: boolean }
-  const renavamData = ref<RenavamParams>({ withMask: false });
-  const mockedRenavam = ref<string>('')
-  const renavamValidate = ref<string|undefined>();
+import { validate, fake } from 'validation-br/dist/renavam'
 
-  const config = [
-    new MockFieldCheckbox('withMask', 'Com máscara')
-  ];
+function handleValidate(value: string) {
+  return validate(value)
+}
 
-  function handleGenerate(data: RenavamParams) {
-    mockedRenavam.value = fake(data.withMask);
-  }
-
-  function handleValidation() {
-    return validate(renavamValidate.value);
-  }
-
-  const renavamNumber = computed(() => renavamValidate.value || '14283256656')
-
-  const states = computed(() => {
-    return {
-      validate: validate(renavamNumber.value),
-      mask:  mask(renavamNumber.value) ,
-      normalize:  normalize(renavamNumber.value) ,
-    }
-  })
+function handleGenerate(withMask: boolean) {
+  return fake(withMask)
+}
 </script>
