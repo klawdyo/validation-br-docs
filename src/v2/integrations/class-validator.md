@@ -6,24 +6,20 @@ outline: deep
 
 O [class-validator](https://github.com/typestack/class-validator) é usado em NestJS, TypeORM e diversos outros frameworks baseados em decorators. Ele permite criar decorators customizados que reaproveitam uma das funções `isX` do `validation-br`.
 
-## Criar validação personalizada
-
-Crie um arquivo `iscpf.decorator.ts` no seu diretório de validadores, por exemplo `src/validators/iscpf.decorator.ts`.
+## Exemplo (API)
 
 ```ts
-// src/validators/iscpf.decorator.ts
 import {
   registerDecorator,
   ValidationOptions,
   ValidatorConstraint,
   ValidatorConstraintInterface,
-  ValidationArguments,
 } from 'class-validator';
 import { isCPF } from 'validation-br';
 
 @ValidatorConstraint({ async: false })
 export class IsCpfConstraint implements ValidatorConstraintInterface {
-  validate(cpf: any, args: ValidationArguments) {
+  validate(cpf: any) {
     return isCPF(cpf);
   }
   defaultMessage() {
@@ -44,21 +40,7 @@ export function IsCpf(validationOptions?: ValidationOptions) {
 }
 ```
 
-## Como usar
-
-```ts
-import { IsCpf } from '../../validators/iscpf.decorator';
-
-export class CreateUserDto {
-  @IsString()
-  @IsNotEmpty()
-  @IsCpf()
-  cpf: string;
-}
-```
-
-## Saiba mais
-
-- [NestJS](https://nestjs.com)
-- [class-validator](https://github.com/typestack/class-validator)
-- [TypeORM](https://typeorm.io/)
+> Bibliotecas de validação de terceiros só precisam de um predicado booleano — por
+> isso o exemplo usa `isCPF` em vez de `new CPF()`. A API de classes é útil quando
+> você quer o valor normalizado ou uma exceção detalhada, mas para plugar em outra
+> lib de validação `isX` já é a integração completa, e funciona igual na 1.x e na 2.0.

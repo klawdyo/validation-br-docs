@@ -6,7 +6,7 @@ outline: deep
 
 O [Joi](https://github.com/hapijs/joi) é um validador de esquemas usado em aplicações Node, React, Vue etc. Ele suporta regras customizadas via `.custom()`, onde uma das funções `isX` do `validation-br` pode ser reaproveitada.
 
-## Criar validação personalizada
+## Exemplo (API)
 
 ```js
 import Joi from 'joi';
@@ -22,15 +22,11 @@ const validateCpf = (value, helper) => {
 const schema = Joi.object({
   cpf: Joi.string().custom(validateCpf),
 });
-```
 
-## Como usar
-
-```js
 schema.validate({ cpf: '01234567890' });
 ```
 
-## Saiba mais
-
-- [Joi](https://github.com/hapijs/joi)
-- [Documentação no npm](https://www.npmjs.com/package/joi)
+> Bibliotecas de validação de terceiros só precisam de um predicado booleano — por
+> isso o exemplo usa `isCPF` em vez de `new CPF()`. A API de classes é útil quando
+> você quer o valor normalizado ou uma exceção detalhada, mas para plugar em outra
+> lib de validação `isX` já é a integração completa, e funciona igual na 1.x e na 2.0.
