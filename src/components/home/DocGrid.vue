@@ -52,15 +52,19 @@ const current = computed(
 
 <style scoped>
 .dg-wrap {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: minmax(260px, 340px) 1fr;
   gap: 24px;
+  align-items: start;
 }
 
 .dg-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  gap: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 560px;
+  overflow-y: auto;
+  padding-right: 6px;
 }
 
 .dg-card {
@@ -113,6 +117,8 @@ const current = computed(
   display: flex;
   flex-direction: column;
   gap: 12px;
+  position: sticky;
+  top: calc(var(--vp-nav-height, 64px) + 16px);
 }
 
 .dg-more {
@@ -127,17 +133,27 @@ const current = computed(
   text-decoration: underline;
 }
 
-/* Em telas pequenas, com muitos cards empilhados verticalmente, o preview
-   do código ficava só depois de rolar a lista inteira. Vira uma faixa de
-   rolagem horizontal com altura fixa (uma linha de cards), então o preview
-   sempre aparece logo abaixo, sem precisar descer a página toda. */
+/* Em telas pequenas não cabem duas colunas lado a lado. Volta a
+   empilhar (lista em cima, preview embaixo) e, como são ~20 cards, a
+   lista vira uma faixa de rolagem horizontal com altura fixa (uma
+   linha de cards) em vez de empilhar verticalmente, senão o preview
+   só apareceria depois de rolar a lista inteira. */
 @media (max-width: 640px) {
+  .dg-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
   .dg-cards {
     display: flex;
-    grid-template-columns: unset;
+    flex-direction: row;
+    max-height: none;
+    overflow-y: visible;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     padding-bottom: 6px;
+    padding-right: 0;
     margin-inline: -24px;
     padding-inline: 24px;
     -webkit-overflow-scrolling: touch;
@@ -148,6 +164,10 @@ const current = computed(
     /* largura menor que 100% pra deixar o próximo card espiando na borda */
     width: 82%;
     scroll-snap-align: start;
+  }
+
+  .dg-preview {
+    position: static;
   }
 }
 </style>
