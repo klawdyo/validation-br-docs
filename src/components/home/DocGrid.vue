@@ -126,4 +126,28 @@ const current = computed(
 .dg-more:hover {
   text-decoration: underline;
 }
+
+/* Em telas pequenas, com muitos cards empilhados verticalmente, o preview
+   do código ficava só depois de rolar a lista inteira. Vira uma faixa de
+   rolagem horizontal com altura fixa (uma linha de cards), então o preview
+   sempre aparece logo abaixo, sem precisar descer a página toda. */
+@media (max-width: 640px) {
+  .dg-cards {
+    display: flex;
+    grid-template-columns: unset;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 6px;
+    margin-inline: -24px;
+    padding-inline: 24px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .dg-card {
+    flex: 0 0 auto;
+    /* largura menor que 100% pra deixar o próximo card espiando na borda */
+    width: 82%;
+    scroll-snap-align: start;
+  }
+}
 </style>
