@@ -14,6 +14,6 @@
   },
   "dependencies": {
     "validation-br": "^1.6.5",
-    "validation-br-v2": "npm:validation-br@2.0.0-next-13"
+    "validation-br-v2": "npm:validation-br@^2.0.0"
   }
 }
