@@ -4,29 +4,58 @@ outline: deep
 
 # Título de Eleitor
 
-Descrição: Validador para o Título de Eleitor (12 dígitos).
+É o documento que comprova o registro de um eleitor perante a Justiça Eleitoral e o habilita a votar — também aceito como identificação em diversos serviços.
 
-## Como o cálculo é feito
-
-```text
-Título de eleitor tem 12 dígitos: 8 sequenciais + 2 dígitos da UF + 2 DV.
-
-1) DV1: soma dos produtos dos 8 primeiros dígitos pelos fatores [2,3,4,5,6,7,8,9]; DV1 = resto % 11 (se resto 10 => DV1 = 0).
-
-2) DV2: soma dos produtos dos dois dígitos da UF e DV1 pelos fatores [7,8,9]; DV2 = resto % 11 (se resto 10 => DV2 = 0).
-```
+<DocPlayground
+  placeholder="Digite um Título de Eleitor para validar"
+  valid-label="Título válido"
+  invalid-label="Título inválido"
+  generate-label="Gerar Título de exemplo"
+  :validate="handleValidate"
+  :generate="handleGenerate"
+/>
 
 ## Exemplos (API)
 
 ```js
-const t = new TituloEleitor('102385010671')
-console.log('TituloEleitor.mask()', t.mask())
+import { TituloEleitor } from 'validation-br/tituloEleitor';
 
-// Gerar fake
-const fake = TituloEleitor.fake()
-console.log('TituloEleitor.fake()', fake.toString())
+// Criar e validar (lança se inválido)
+const t = new TituloEleitor('5250.2888.1694');
+t.mask(); // -> '5250.2888.1694'
 
-// Calcular checksum (10 primeiros dígitos)
-const dv = TituloEleitor.checksum('1023850106')
-console.log('TituloEleitor.checksum("1023850106")', dv)
+// Gerar um Título de exemplo válido
+const exemplo = TituloEleitor.fake();
+exemplo.mask();
+
+// Calcular checksum (10 primeiros dígitos: 8 sequenciais + 2 da UF)
+TituloEleitor.checksum('5250288816'); // -> '94'
 ```
+
+## Como o cálculo é feito
+
+O Título de Eleitor tem 12 dígitos: 8 sequenciais + 2 da UF + 2
+dígitos verificadores. O DV1 usa os 8 dígitos sequenciais com pesos de
+2 a 9; o DV2 usa os 2 dígitos da UF + o DV1 calculado, com pesos 7, 8
+e 9. Em ambos os casos, o dígito verificador é o **resto direto** da
+divisão por 11 (sem o passo `11 - resto` usado no CPF/CNPJ).
+
+<img src="/diagrams/titulo-eleitor-check-digits.svg" alt="Cálculo passo a passo dos dígitos verificadores do Título de Eleitor" />
+
+<script setup lang="ts">
+import { TituloEleitor } from 'validation-br-v2/tituloEleitor'
+
+function handleValidate(value: string) {
+  try {
+    new TituloEleitor(value)
+    return true
+  } catch {
+    return false
+  }
+}
+
+function handleGenerate(withMask: boolean) {
+  const fake = TituloEleitor.fake()
+  return withMask ? fake.mask() : fake.toString()
+}
+</script>

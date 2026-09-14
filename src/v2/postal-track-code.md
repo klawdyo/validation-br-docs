@@ -4,27 +4,59 @@ outline: deep
 
 # Código de Rastreamento Postal
 
-Descrição: Validador para códigos de rastreamento postal no formato `JT194690698BR`.
+É o código que os Correios (e outras transportadoras que seguem o padrão internacional UPU) usam pra rastrear uma encomenda do envio até a entrega.
 
-## Como o cálculo é feito
-
-```text
-O código tem 13 caracteres: 2 letras (tipo), 8 números (sequência), 1 DV e 2 letras do país.
-
-O DV é calculado multiplicando os 8 dígitos pelos fatores [8,6,4,2,3,5,9,7], somando, aplicando resto %11 e transformando em DV com especificidades: se resto 0 => DV 5; se resto 1 => DV 0; caso contrário DV = 11 - resto.
-```
+<DocPlayground
+  placeholder="Digite um código de rastreamento para validar"
+  valid-label="Código válido"
+  invalid-label="Código inválido"
+  generate-label="Gerar código de exemplo"
+  :validate="handleValidate"
+  :generate="handleGenerate"
+/>
 
 ## Exemplos (API)
 
 ```js
-const p = new PostalTrackCode('JT194690698BR')
-console.log('PostalTrackCode.toString()', p.toString())
+import { PostalTrackCode } from 'validation-br/postal-track-code';
 
-// Gerar fake
-const fake = PostalTrackCode.fake()
-console.log('PostalTrackCode.fake()', fake.toString())
+// Criar e validar (lança se inválido)
+const p = new PostalTrackCode('JT718252423BR');
+p.toString(); // -> 'JT718252423BR'
 
-// Calcular checksum dos 8 dígitos
-const dv = PostalTrackCode.checksum('19469069')
-console.log('PostalTrackCode.checksum("19469069")', dv)
+// Gerar um código de exemplo válido
+const exemplo = PostalTrackCode.fake();
+exemplo.toString();
+
+// Calcular checksum a partir dos 8 dígitos do meio
+PostalTrackCode.checksum('71825242'); // -> '3'
 ```
+
+## Como o cálculo é feito
+
+O código tem 13 caracteres: 2 letras de tipo, 8 dígitos sequenciais, 1
+dígito verificador e 2 letras do país. O DV é calculado só a partir
+dos 8 dígitos do meio — o prefixo de tipo e o sufixo de país não
+entram na conta. Os 8 dígitos são multiplicados pelos seus pesos, os
+produtos são somados, e o DV é `11 - resto` da divisão por 11 (se der
+10, o DV é 0).
+
+<img src="/diagrams/postal-track-code-check-digits.svg" alt="Cálculo passo a passo do dígito verificador do Código de Rastreamento Postal" />
+
+<script setup lang="ts">
+import { PostalTrackCode } from 'validation-br-v2/postal-track-code'
+
+function handleValidate(value: string) {
+  try {
+    new PostalTrackCode(value)
+    return true
+  } catch {
+    return false
+  }
+}
+
+function handleGenerate(withMask: boolean) {
+  const fake = PostalTrackCode.fake()
+  return withMask ? fake.mask() : fake.toString()
+}
+</script>

@@ -4,27 +4,58 @@ outline: deep
 
 # RENAVAM
 
-Descrição: Validador para números RENAVAM de veículos (11 dígitos).
+RENAVAM é o registro nacional de um veículo no DETRAN — é único por veículo e acompanha ele mesmo que a placa, o dono ou o estado mudem.
 
-## Como o cálculo é feito
-
-```text
-RENAVAM possui 11 caracteres; os 10 primeiros são a numeração e o 11º é DV.
-
-O somatório dos produtos pelos fatores [3,2,9,8,7,6,5,4,3,2] é multiplicado por 10 e então aplicado MOD11; se o resto for >=10, DV = 0.
-```
+<DocPlayground
+  placeholder="Digite um RENAVAM para validar"
+  valid-label="RENAVAM válido"
+  invalid-label="RENAVAM inválido"
+  generate-label="Gerar RENAVAM de exemplo"
+  :validate="handleValidate"
+  :generate="handleGenerate"
+/>
 
 ## Exemplos (API)
 
 ```js
-const r = new Renavam('26827649960')
-console.log('Renavam.mask()', r.mask())
+import { Renavam } from 'validation-br/renavam';
 
-// Gerar fake
-const fake = Renavam.fake()
-console.log('Renavam.fake()', fake.toString())
+// Criar e validar (lança se inválido)
+const r = new Renavam('9505984597-6');
+r.toString(); // -> '95059845976'
 
-// Calcular checksum (10 primeiros dígitos)
-const dv = Renavam.checksum('2682764996')
-console.log('Renavam.checksum("2682764996")', dv)
+// Gerar um RENAVAM de exemplo válido
+const exemplo = Renavam.fake();
+exemplo.mask();
+
+// Calcular checksum a partir dos 10 primeiros dígitos
+Renavam.checksum('9505984597'); // -> '6'
 ```
+
+## Como o cálculo é feito
+
+O RENAVAM tem 11 caracteres: os 10 primeiros são a numeração e o 11º é
+o dígito verificador. A soma ponderada dos 10 dígitos é multiplicada
+por 10 antes de aplicar o módulo 11, e o DV é o **resto direto** dessa
+divisão (não `11 - resto` como no CPF/CNPJ) — se o resto for maior ou
+igual a 10, o DV vira 0.
+
+<img src="/diagrams/renavam-check-digits.svg" alt="Cálculo passo a passo do dígito verificador do RENAVAM" />
+
+<script setup lang="ts">
+import { Renavam } from 'validation-br-v2/renavam'
+
+function handleValidate(value: string) {
+  try {
+    new Renavam(value)
+    return true
+  } catch {
+    return false
+  }
+}
+
+function handleGenerate(withMask: boolean) {
+  const fake = Renavam.fake()
+  return withMask ? fake.mask() : fake.toString()
+}
+</script>

@@ -4,7 +4,7 @@ outline: deep
 
 # CPF
 
-Validador para números de CPF (Cadastro de Pessoas Físicas).
+O CPF identifica uma pessoa física perante a Receita Federal — é o documento de identificação civil mais usado no Brasil, exigido em contratos, cadastros e serviços financeiros.
 
 <DocPlayground
   placeholder="Digite um CPF para validar"

@@ -4,7 +4,7 @@ outline: deep
 
 # Utils
 
-Descrição: Funções utilitárias usadas pelos validadores. Contém helpers como `sumToDV`, `checkRepeatedSequence`, `sumElementsByMultipliers`, `clearValue`, `insertAtPosition` e `removeFromPosition`.
+Funções internas de apoio (cálculo de dígito verificador genérico, limpeza de valor, etc.) usadas por vários validadores da lib — a maioria das pessoas não precisa importar isso diretamente.
 
 ## Funções principais
 

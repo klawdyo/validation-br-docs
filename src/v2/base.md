@@ -4,7 +4,7 @@ outline: deep
 
 # Base
 
-Validador base que provê métodos utilitários comuns usados pelos validadores.
+Classe base que todo validador da lib estende — não é usada diretamente, mas entender ela ajuda a entender o comportamento comum (imutabilidade, `.mask()`, `.toString()`) de qualquer documento.
 
 ## Exemplo de uso
 

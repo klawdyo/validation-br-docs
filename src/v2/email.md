@@ -4,7 +4,7 @@ outline: deep
 
 # Email
 
-Descrição: Validador básico de endereços de e-mail. Esta implementação é simples e serve principalmente como suporte para `PixKey`.
+Validação básica de formato de e-mail — usada internamente como apoio pro `PixKey` reconhecer chaves do tipo e-mail, mas pode ser usada sozinha também.
 
 ## Exemplos (API)
 

@@ -4,7 +4,7 @@ outline: deep
 
 # Telefone
 
-Descrição: Validador básico para números de telefone brasileiros. Implementação simples — usado principalmente para dar suporte a `PixKey`.
+Validação básica de números de telefone brasileiros (fixo e celular, com ou sem DDI) — usada internamente como apoio pro `PixKey` reconhecer chaves do tipo telefone.
 
 ## Exemplos (API)
 

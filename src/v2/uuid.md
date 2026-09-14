@@ -4,7 +4,7 @@ outline: deep
 
 # UUID
 
-Descrição: Validador básico de `UUID`. Implementação simples usada principalmente para dar suporte ao `PixKey` (EVP).
+Validação de identificadores UUID — usada internamente como apoio pro `PixKey` reconhecer chaves aleatórias (EVP), que são sempre um UUID.
 
 ## Exemplos (API)
 

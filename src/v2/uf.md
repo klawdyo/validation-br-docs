@@ -4,7 +4,7 @@ outline: deep
 
 # UF
 
-Descrição: Validador para siglas de Unidades Federativas (UF). Página agrupada em `Utils`.
+UF é a sigla de duas letras que identifica um estado ou o Distrito Federal (SP, RJ, MG...) — usada em endereços, documentos e faixas de CEP.
 
 ## Exemplos (API)
 
