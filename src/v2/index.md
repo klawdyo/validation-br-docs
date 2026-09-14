@@ -105,7 +105,7 @@ CNPJ.fake({ alphanumeric: true }).mask();
 // -> 'WX.BC2.1FX/0001-00'
 
 new CNPJ('WX.BC2.1FX/0001-00').value;
-// -> true`
+// -> 'WXBC21FX000100'`
 
 const docsV2 = [
   {
