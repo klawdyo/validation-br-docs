@@ -149,12 +149,17 @@ const current = computed(
     display: flex;
     flex-direction: row;
     max-height: none;
+    /* overflow-x: auto força o overflow-y computado a virar "auto" também
+       (mesmo escrevendo "visible" aqui), então sem padding-top a borda do
+       card ativo fica colada no topo do container e é cortada */
     overflow-y: visible;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
+    padding-top: 4px;
     padding-bottom: 6px;
     padding-right: 0;
     margin-inline: -24px;
+    margin-top: -4px;
     padding-inline: 24px;
     -webkit-overflow-scrolling: touch;
   }
