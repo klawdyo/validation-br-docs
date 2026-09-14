@@ -23,6 +23,7 @@ import { CarPlate } from 'validation-br/carplate';
 
 // Validar uma placa (lança se inválida)
 const plate = new CarPlate('ABC-1D23');
+plate.value;      // -> 'ABC1D23'
 plate.toString(); // -> 'ABC1D23'
 plate.mask();      // -> 'ABC-1D23'
 

@@ -41,6 +41,9 @@ O PixKey testa o valor contra os validadores disponíveis (isCPF, isCNPJ, isUUID
 ```js
 // Validar e obter o tipo
 const pk = new PixKey('user@example.com')
+console.log('pk.value', pk.value)           // -> 'user@example.com'
+console.log('pk.toString()', pk.toString()) // -> 'user@example.com'
+console.log('pk.mask()', pk.mask())         // -> 'user@example.com'
 console.log('PixKey.type', pk.type) // 'email'
 
 // Gerar chaves fake por tipo

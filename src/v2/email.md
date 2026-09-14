@@ -10,7 +10,9 @@ Validação básica de formato de e-mail — usada internamente como apoio pro `
 
 ```js
 const e = new Email('user@example.com')
+console.log('e.value', e.value)
 console.log('Email.toString()', e.toString())
+// e.mask() lança exceção — Email não tem máscara
 
 const fake = Email.fake()
 console.log('Email.fake()', fake.toString())

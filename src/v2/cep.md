@@ -37,6 +37,7 @@ isCEP('01001-000'); // -> true
 
 // Criar e validar (lança se inválido)
 const cep = new CEP('01001-000');
+cep.value;      // -> '01001000'
 cep.toString(); // -> '01001000'
 cep.mask();      // -> '01001-000'
 

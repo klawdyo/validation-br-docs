@@ -22,6 +22,7 @@ import { PIS } from 'validation-br/pis-pasep';
 
 // Criar e validar (lança se inválido)
 const pis = new PIS('712.82677.38-0');
+pis.value;      // -> '71282677380'
 pis.toString(); // -> '71282677380'
 pis.mask();      // -> '712.82677.38-0'
 

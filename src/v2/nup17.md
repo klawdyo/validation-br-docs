@@ -22,7 +22,9 @@ import { NUP17 } from 'validation-br/nup17';
 
 // Criar e validar (lança se inválido)
 const nup = new NUP17('23037.001462/2021-65');
+nup.value;      // -> '23037001462202165'
 nup.toString(); // -> '23037001462202165'
+nup.mask();     // -> '23037.001462/2021-65'
 
 // Gerar um NUP17 de exemplo válido
 const exemplo = NUP17.fake();

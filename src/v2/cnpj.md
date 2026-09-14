@@ -31,7 +31,8 @@ import { CNPJ } from 'validation-br/cnpj';
 
 // Criar e validar (lança se inválido)
 const cnpj = new CNPJ('55.585.709/0001-98');
-cnpj.toString(); // -> '55585709000198'
+cnpj.value;       // -> '55585709000198'
+cnpj.toString();  // -> '55585709000198'
 cnpj.mask();      // -> '55.585.709/0001-98'
 
 // Gerar um CNPJ de exemplo válido (numérico ou alfanumérico)

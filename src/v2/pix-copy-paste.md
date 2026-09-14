@@ -30,7 +30,9 @@ const pix = '00020101021226820014br.gov.bcb.pix2560pix.stone.com.br/pix/v2/b411f
 
 // Criar e validar (lança se inválido)
 const copyPaste = new PixCopyPaste(pix);
-copyPaste.toString(); // -> string original, sem espaços nas pontas
+copyPaste.value;      // -> string normalizada, sem espaços nas pontas
+copyPaste.toString(); // -> string normalizada, sem espaços nas pontas
+copyPaste.mask();     // -> igual a toString(), não há máscara pro Pix Copia e Cola
 ```
 
 > `PixCopyPaste` não possui `fake()` nem `checksum()` isolado — o CRC16

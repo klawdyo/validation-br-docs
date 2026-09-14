@@ -41,6 +41,9 @@ isJudicialProcess('0002080-25.2012.5.15.0049'); // -> true
 
 // Construir, validar e acessar partes
 const p = new JudicialProcess('0002080-25.2012.5.15.0049')
+console.log('p.value', p.value)
+console.log('p.toString()', p.toString())
+console.log('p.mask()', p.mask())
 console.log('processNumber', p.processNumber) // primeiros 7
 console.log('checksum', p.checksum)      // dv
 console.log('year', p.year)

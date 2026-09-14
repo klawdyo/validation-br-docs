@@ -9,8 +9,16 @@ Validação básica de números de telefone brasileiros (fixo e celular, com ou 
 ## Exemplos (API)
 
 ```js
+import { isPhone } from 'validation-br';
+import { Phone } from 'validation-br/phone';
+
+// Modo rápido
+isPhone('(11) 91234-5678'); // -> true
+
 const p = new Phone('(11) 91234-5678')
-console.log('Phone.toString()', p.toString())
+console.log('p.value', p.value)           // -> '+5511912345678'
+console.log('p.toString()', p.toString()) // -> '+5511912345678'
+console.log('p.mask()', p.mask())         // -> '11 912345678'
 
 const fake = Phone.fake()
 console.log('Phone.fake()', fake.toString())

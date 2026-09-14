@@ -22,7 +22,9 @@ import { Renavam } from 'validation-br/renavam';
 
 // Criar e validar (lança se inválido)
 const r = new Renavam('9505984597-6');
+r.value;      // -> '95059845976'
 r.toString(); // -> '95059845976'
+r.mask();     // -> '9505984597-6'
 
 // Gerar um RENAVAM de exemplo válido
 const exemplo = Renavam.fake();

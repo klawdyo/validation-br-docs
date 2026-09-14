@@ -22,7 +22,9 @@ import { PostalTrackCode } from 'validation-br/postal-track-code';
 
 // Criar e validar (lança se inválido)
 const p = new PostalTrackCode('JT718252423BR');
+p.value;      // -> 'JT718252423BR'
 p.toString(); // -> 'JT718252423BR'
+p.mask();     // -> 'JT718252423BR'
 
 // Gerar um código de exemplo válido
 const exemplo = PostalTrackCode.fake();

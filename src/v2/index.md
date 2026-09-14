@@ -140,6 +140,7 @@ isCNPJ('55.585.709/0001-98'); // -> true
 
 // Modo Value-Object
 const cnpj = new CNPJ('55.585.709/0001-98');
+cnpj.value;      // -> '55585709000198'
 cnpj.toString(); // -> '55585709000198'
 cnpj.mask();     // -> '55.585.709/0001-98'`,
   },
@@ -157,6 +158,7 @@ isCNH('62472927637'); // -> true
 
 // Modo Value-Object
 const cnh = new CNH('624729276-37');
+cnh.value;      // -> '62472927637'
 cnh.toString(); // -> '62472927637'
 cnh.mask();     // -> '624729276-37'`,
   },
@@ -174,6 +176,7 @@ isPIS('712.82677.38-0'); // -> true
 
 // Modo Value-Object
 const pis = new PIS('712.82677.38-0');
+pis.value;      // -> '71282677380'
 pis.toString(); // -> '71282677380'
 pis.mask();     // -> '712.82677.38-0'`,
   },
@@ -191,7 +194,9 @@ isTituloEleitor('5250.2888.1694'); // -> true
 
 // Modo Value-Object
 const t = new TituloEleitor('5250.2888.1694');
-t.mask(); // -> '5250.2888.1694'`,
+t.value;      // -> '525028881694'
+t.toString(); // -> '525028881694'
+t.mask();     // -> '5250.2888.1694'`,
   },
   {
     id: 'nup17',
@@ -207,7 +212,9 @@ isNUP17('23037.001462/2021-65'); // -> true
 
 // Modo Value-Object
 const nup = new NUP17('23037.001462/2021-65');
-nup.toString(); // -> '23037001462202165'`,
+nup.value;      // -> '23037001462202165'
+nup.toString(); // -> '23037001462202165'
+nup.mask();     // -> '23037.001462/2021-65'`,
   },
   {
     id: 'judicial',
@@ -223,6 +230,9 @@ isJudicialProcess('0002080-25.2012.5.15.0049'); // -> true
 
 // Modo Value-Object
 const p = new JudicialProcess('0002080-25.2012.5.15.0049');
+p.value;      // -> '00020802520125150049'
+p.toString(); // -> '00020802520125150049'
+p.mask();     // -> '0002080-25.2012.5.15.0049'
 p.year;       // -> '2012'
 p.court;      // -> '5'
 p.subCourt;   // -> '15'
@@ -242,7 +252,9 @@ isPostalTrackCode('JT718252423BR'); // -> true
 
 // Modo Value-Object
 const p = new PostalTrackCode('JT718252423BR');
-p.toString(); // -> 'JT718252423BR'`,
+p.value;      // -> 'JT718252423BR'
+p.toString(); // -> 'JT718252423BR'
+p.mask();     // -> 'JT718252423BR'`,
   },
   {
     id: 'renavam',
@@ -258,6 +270,7 @@ isRenavam('9505984597-6'); // -> true
 
 // Modo Value-Object
 const r = new Renavam('9505984597-6');
+r.value;      // -> '95059845976'
 r.toString(); // -> '95059845976'
 r.mask();     // -> '9505984597-6'`,
   },
@@ -275,7 +288,9 @@ isPhone('(11) 91234-5678'); // -> true
 
 // Modo Value-Object
 const p = new Phone('(11) 91234-5678');
-p.toString(); // -> '5511912345678'`,
+p.value;      // -> '+5511912345678'
+p.toString(); // -> '+5511912345678'
+p.mask();     // -> '11 912345678'`,
   },
   {
     id: 'cep',
@@ -291,6 +306,7 @@ isCEP('01310-100'); // -> true
 
 // Modo Value-Object
 const cep = new CEP('01310-100');
+cep.value;      // -> '01310100'
 cep.toString(); // -> '01310100'
 cep.mask();     // -> '01310-100'`,
   },
@@ -307,6 +323,9 @@ import { UF } from 'validation-br/uf';
 isUF('SP'); // -> true
 
 const uf = new UF('SP');
+uf.value;         // -> 'SP'
+uf.toString();    // -> 'SP'
+uf.mask();        // -> 'SP'
 uf.short;         // -> 'SP'
 uf.name;          // -> 'São Paulo'
 
@@ -328,7 +347,10 @@ isPixKey('user@example.com'); // -> true
 
 // Modo Value-Object
 const pk = new PixKey('user@example.com');
-pk.type; // -> 'email'`,
+pk.value;      // -> 'user@example.com'
+pk.toString(); // -> 'user@example.com'
+pk.mask();     // -> 'user@example.com'
+pk.type;       // -> 'email'`,
   },
   {
     id: 'boleto',
@@ -346,7 +368,9 @@ isBoleto(linha); // -> true
 
 // Modo Value-Object
 const boleto = new Boleto(linha);
-boleto.toString(); // -> linha digitável, 47 dígitos`,
+boleto.value;      // -> '34198532419429701941940804574073716770000123456'
+boleto.toString(); // -> '34198532419429701941940804574073716770000123456'
+boleto.mask();     // -> '34198.53241 94297.019419 40804.574073 7 16770000123456'`,
   },
   {
     id: 'caepf',
@@ -362,6 +386,7 @@ isCAEPF('411.422.600/001-01'); // -> true
 
 // Modo Value-Object
 const caepf = new CAEPF('411.422.600/001-01');
+caepf.value;      // -> '41142260000101'
 caepf.toString(); // -> '41142260000101'
 caepf.mask();     // -> '411.422.600/001-01'`,
   },
@@ -379,6 +404,7 @@ isCarPlate('ABC-1D23'); // -> true
 
 // Modo Value-Object
 const plate = new CarPlate('ABC-1D23');
+plate.value;      // -> 'ABC1D23'
 plate.toString(); // -> 'ABC1D23'
 plate.mask();     // -> 'ABC-1D23'`,
   },
@@ -396,6 +422,7 @@ isCBISinter('41DNR433'); // -> true
 
 // Modo Value-Object
 const cib = new CBISinter('41DNR433');
+cib.value;      // -> '41DNR433'
 cib.toString(); // -> '41DNR433'
 cib.mask();     // -> '41DNR43-3'`,
   },
@@ -415,7 +442,9 @@ isCertidao(numero); // -> true
 
 // Modo Value-Object
 const certidao = new Certidao(numero);
-certidao.mask(); // -> '104539 01 55 2013 1 00012 021 0000123-21'`,
+certidao.value;      // -> '10453901552013100012021000012321'
+certidao.toString(); // -> '10453901552013100012021000012321'
+certidao.mask();     // -> '104539 01 55 2013 1 00012 021 0000123 21'`,
   },
   {
     id: 'email',
@@ -431,7 +460,9 @@ isEmail('user@example.com'); // -> true
 
 // Modo Value-Object
 const email = new Email('user@example.com');
-email.toString(); // -> 'user@example.com'`,
+email.value;      // -> 'user@example.com'
+email.toString(); // -> 'user@example.com'
+// email.mask() lança: Email não tem máscara`,
   },
   {
     id: 'uuid',
@@ -448,7 +479,10 @@ const id = '550e8400-e29b-41d4-a716-446655440000';
 isUUID(id); // -> true
 
 // Modo Value-Object
-new UUID(id).toString(); // -> '550e8400-e29b-41d4-a716-446655440000'`,
+const uuid = new UUID(id);
+uuid.value;      // -> '550e8400e29b41d4a716446655440000'
+uuid.toString(); // -> '550e8400e29b41d4a716446655440000'
+uuid.mask();     // -> '550e8400-e29b-41d4-a716-446655440000'`,
   },
 ]
 </script>

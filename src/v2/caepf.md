@@ -22,6 +22,7 @@ import { CAEPF } from 'validation-br/caepf';
 
 // Criar e validar (lança se inválido)
 const caepf = new CAEPF('411.422.600/001-01');
+caepf.value;      // -> '41142260000101'
 caepf.toString(); // -> '41142260000101'
 caepf.mask();      // -> '411.422.600/001-01'
 

@@ -22,7 +22,9 @@ import { TituloEleitor } from 'validation-br/tituloEleitor';
 
 // Criar e validar (lança se inválido)
 const t = new TituloEleitor('5250.2888.1694');
-t.mask(); // -> '5250.2888.1694'
+t.value;      // -> '525028881694'
+t.toString(); // -> '525028881694'
+t.mask();     // -> '5250.2888.1694'
 
 // Gerar um Título de exemplo válido
 const exemplo = TituloEleitor.fake();

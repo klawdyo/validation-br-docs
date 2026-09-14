@@ -22,6 +22,7 @@ import { CBISinter } from 'validation-br/cbi_sinter';
 
 // Criar e validar (lança se inválido)
 const cib = new CBISinter('41DNR433');
+cib.value;      // -> '41DNR433'
 cib.toString(); // -> '41DNR433'
 cib.mask();      // -> '41DNR43-3'
 

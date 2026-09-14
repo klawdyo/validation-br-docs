@@ -22,6 +22,7 @@ import { CNH } from 'validation-br/cnh';
 
 // Criar e validar (lança se inválido)
 const cnh = new CNH('624729276-37');
+cnh.value;      // -> '62472927637'
 cnh.toString(); // -> '62472927637'
 cnh.mask();      // -> '624729276-37'
 

@@ -22,8 +22,9 @@ import { Certidao, CertidaoTipoLivro, CertidaoServico } from 'validation-br/cert
 
 // Criar e validar (lança se inválido)
 const certidao = new Certidao('104539015520131000120210000123-21');
-certidao.toString(); // -> valor normalizado com 32 dígitos
-certidao.mask();      // -> '104539 01 55 2013 1 00012 021 0000123-21'
+certidao.value;      // -> '10453901552013100012021000012321'
+certidao.toString(); // -> '10453901552013100012021000012321'
+certidao.mask();      // -> '104539 01 55 2013 1 00012 021 0000123 21'
 
 // Gerar uma certidão de exemplo válida (aceita opções)
 Certidao.fake({

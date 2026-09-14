@@ -22,7 +22,8 @@ import { Boleto } from 'validation-br/boleto';
 
 // Criar a partir da linha digitável (com ou sem máscara)
 const boleto = new Boleto('34198.53241 94297.019419 40804.574073 7 16770000123456');
-boleto.toString(); // -> linha digitável, sempre 47 dígitos
+boleto.value;      // -> '34198532419429701941940804574073716770000123456'
+boleto.toString(); // -> '34198532419429701941940804574073716770000123456'
 
 // Ou a partir do código de barras
 Boleto.fromBarcode('34197167700001234568532494297019414080457407');

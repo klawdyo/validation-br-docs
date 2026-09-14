@@ -16,7 +16,9 @@ import { UF } from 'validation-br/uf';
 isUF('SP'); // -> true
 
 const uf = new UF('SP')
+console.log('uf.value', uf.value)
 console.log('uf.toString()', uf.toString())
+console.log('uf.mask()', uf.mask())
 console.log('uf.short', uf.short)
 console.log('uf.name', uf.name)
 console.log('uf.getName()', uf.getName())
