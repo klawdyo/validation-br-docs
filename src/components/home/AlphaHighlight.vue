@@ -38,6 +38,14 @@ defineProps<{
   background: linear-gradient(135deg, #4338ca 0%, #7c3aed 55%, #db2777 100%);
 }
 
+/* Sem min-width: 0, um item de grid não encolhe além do conteúdo
+   intrínseco (a linha de código), e o card inteiro estoura a largura
+   da tela em vez de deixar a rolagem interna do CodeWindow assumir. */
+.ah-text,
+.ah-code {
+  min-width: 0;
+}
+
 .ah-eyebrow {
   display: inline-block;
   font-size: 12px;
@@ -66,6 +74,13 @@ defineProps<{
 .ah-desc :deep(a) {
   color: #ffffff;
   text-decoration: underline;
+}
+
+.ah-desc :deep(code) {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 4px;
+  padding: 2px 6px;
 }
 
 .ah-link {
@@ -111,6 +126,23 @@ defineProps<{
   .ah-band {
     grid-template-columns: 1fr;
     padding: 32px 24px;
+  }
+}
+
+/* Em telas pequenas o card ocupa a largura toda (cancelando o gutter
+   de 24px do HomeSection) e perde o cantos arredondados, já que
+   encosta nas bordas da viewport. */
+@media (max-width: 640px) {
+  .ah-band {
+    margin-inline: -24px;
+    border-radius: 0;
+    padding: 28px 20px;
+  }
+
+  .ah-link {
+    display: flex;
+    width: fit-content;
+    margin-inline: auto;
   }
 }
 </style>
