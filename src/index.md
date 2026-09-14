@@ -271,7 +271,11 @@ cep.mask();     // -> '01310-100'`,
     title: 'UF',
     details: 'Sigla de estado (SP, RJ, MG...) usada em endereços e documentos.',
     href: '/v2/uf',
-    code: `import { UF } from 'validation-br/uf';
+    code: `import { isUF } from 'validation-br';
+import { UF } from 'validation-br/uf';
+
+// Modo rápido
+isUF('SP'); // -> true
 
 const uf = new UF('SP');
 uf.short;         // -> 'SP'

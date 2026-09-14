@@ -9,6 +9,12 @@ UF é a sigla de duas letras que identifica um estado ou o Distrito Federal (SP,
 ## Exemplos (API)
 
 ```js
+import { isUF } from 'validation-br';
+import { UF } from 'validation-br/uf';
+
+// Modo rápido
+isUF('SP'); // -> true
+
 const uf = new UF('SP')
 console.log('uf.toString()', uf.toString())
 console.log('uf.short', uf.short)
