@@ -186,7 +186,11 @@ nup.toString(); // -> '23037001462202165'`,
     title: 'Processo Judicial',
     details: 'Padrão nacional adotado em 2010: cível, eleitoral, militar e mais.',
     href: '/v2/judicial-process',
-    code: `import { JudicialProcess } from 'validation-br/judicial-process';
+    code: `import { isJudicialProcess } from 'validation-br';
+import { JudicialProcess } from 'validation-br/judicial-process';
+
+// Modo rápido
+isJudicialProcess('0002080-25.2012.5.15.0049'); // -> true
 
 // Modo Value-Object
 const p = new JudicialProcess('0002080-25.2012.5.15.0049');

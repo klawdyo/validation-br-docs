@@ -33,6 +33,12 @@ a próxima. No final, o dígito verificador é `98` menos o resto da
 ## Exemplos (API)
 
 ```js
+import { isJudicialProcess } from 'validation-br';
+import { JudicialProcess } from 'validation-br/judicial-process';
+
+// Modo rápido
+isJudicialProcess('0002080-25.2012.5.15.0049'); // -> true
+
 // Construir, validar e acessar partes
 const p = new JudicialProcess('0002080-25.2012.5.15.0049')
 console.log('processNumber', p.processNumber) // primeiros 7

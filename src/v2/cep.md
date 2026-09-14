@@ -28,8 +28,12 @@ CEP identifica uma área de entrega dos Correios — uma cidade, um bairro ou at
 ## Exemplos (API)
 
 ```js
+import { isCEP } from 'validation-br';
 import { CEP } from 'validation-br/cep';
 import { UF } from 'validation-br/uf';
+
+// Modo rápido
+isCEP('01001-000'); // -> true
 
 // Criar e validar (lança se inválido)
 const cep = new CEP('01001-000');
