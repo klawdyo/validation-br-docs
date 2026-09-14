@@ -58,6 +58,16 @@ const current = computed(
   align-items: start;
 }
 
+/* Sem min-width: 0, um item de grid não encolhe além do conteúdo
+   intrínseco. Uma linha de import comprida (ex: nome de classe grande
+   como "JudicialProcess") força a coluna do preview a estourar a
+   largura disponível em vez de deixar a rolagem interna do
+   CodeWindow assumir. */
+.dg-cards,
+.dg-preview {
+  min-width: 0;
+}
+
 .dg-cards {
   display: flex;
   flex-direction: column;
