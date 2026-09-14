@@ -43,7 +43,7 @@ export default defineConfig({
     ['meta', { name: 'google-adsense-account', content: 'ca-pub-9643986318610515' }],
     [
       'script',
-      { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=GTM-W528C3M7' }
+      { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-9TQH37109T' }
     ],
     [
       'script',
@@ -51,7 +51,8 @@ export default defineConfig({
       `window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'GTM-W528C3M7');`
+
+      gtag('config', 'G-9TQH37109T');`
     ]
   ],
 
