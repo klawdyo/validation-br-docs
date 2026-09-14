@@ -41,6 +41,19 @@
   display: inline-block;
 }
 
+/* Subtítulo: o parágrafo logo abaixo do H1 — precisa dizer o que o
+   documento É antes de qualquer detalhe técnico (isso vai na seção
+   "Como o cálculo é feito"). Maior e mais forte que texto normal, mas
+   bem abaixo do tamanho do H1. */
+.theme-v2 .vp-doc h1 + p {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--vp-c-text-1);
+  margin-top: 8px;
+  margin-bottom: 28px;
+}
+
 .theme-v2 .vp-doc h2 {
   border-top: 1px solid var(--vp-c-divider);
   padding-top: 20px;

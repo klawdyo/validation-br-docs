@@ -5,6 +5,12 @@ import VersionSelector from '../components/VersionSelector.vue'
 import VersionBadge from '../components/VersionBadge.vue'
 import VersionRedirect from '../components/VersionRedirect.vue'
 import DocPlayground from '../../src/components/playground/DocPlayground.vue'
+import Callout from '../../src/components/ui/Callout.vue'
+import CodeWindow from '../../src/components/home/CodeWindow.vue'
+import HeroCode from '../../src/components/home/HeroCode.vue'
+import HomeSection from '../../src/components/home/HomeSection.vue'
+import AlphaHighlight from '../../src/components/home/AlphaHighlight.vue'
+import DocGrid from '../../src/components/home/DocGrid.vue'
 import './custom.css'
 import './v2.css'
 import 'uno.css' // Importação vital para as classes funcionarem
@@ -47,5 +53,11 @@ export default {
   },
   enhanceApp({ app }) {
     app.component('DocPlayground', DocPlayground)
+    app.component('Callout', Callout)
+    app.component('CodeWindow', CodeWindow)
+    app.component('HeroCode', HeroCode)
+    app.component('HomeSection', HomeSection)
+    app.component('AlphaHighlight', AlphaHighlight)
+    app.component('DocGrid', DocGrid)
   },
 }

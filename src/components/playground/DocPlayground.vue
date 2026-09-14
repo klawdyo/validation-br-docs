@@ -37,6 +37,10 @@
         <div class="dp-result-label">
           <span class="dp-result-label-text">{{ props.generateLabel }}</span>
           <div class="dp-result-actions">
+            <label v-if="props.secondaryOptionLabel" class="dp-checkbox-sm">
+              <input type="checkbox" v-model="secondaryOption" @change="handleGenerate" />
+              {{ props.secondaryOptionLabel }}
+            </label>
             <label v-if="props.showMaskOption" class="dp-checkbox-sm">
               <input type="checkbox" v-model="withMask" @change="handleGenerate" />
               Máscara
@@ -71,8 +75,9 @@ const props = withDefaults(
     invalidLabel?: string
     generateLabel?: string
     showMaskOption?: boolean
+    secondaryOptionLabel?: string
     validate: (value: string) => boolean
-    generate: (withMask: boolean) => string
+    generate: (withMask: boolean, secondaryOption: boolean) => string
   }>(),
   {
     placeholder: 'Digite um valor para validar',
@@ -86,6 +91,7 @@ const props = withDefaults(
 const tab = ref<'validate' | 'generate'>('validate')
 const inputValue = ref('')
 const withMask = ref(true)
+const secondaryOption = ref(false)
 const generated = ref('')
 
 const isValid = computed(() => {
@@ -97,7 +103,7 @@ const isValid = computed(() => {
 })
 
 function handleGenerate() {
-  generated.value = props.generate(withMask.value)
+  generated.value = props.generate(withMask.value, secondaryOption.value)
 }
 
 handleGenerate()
