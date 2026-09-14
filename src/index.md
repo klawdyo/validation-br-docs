@@ -67,7 +67,7 @@ isCPF('098.765.432-10'); // true
 
 // Modo Value-Object
 const cpf = new CPF('098.765.432-10');
-cpf.mask(); // '098.765.432-10'`
+cpf.value; // '09876543210'`
 
 const alphaCode = `import { CNPJ } from 'validation-br/cnpj';
 
