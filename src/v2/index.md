@@ -370,7 +370,13 @@ isBoleto(linha); // -> true
 const boleto = new Boleto(linha);
 boleto.value;      // -> '34198532419429701941940804574073716770000123456'
 boleto.toString(); // -> '34198532419429701941940804574073716770000123456'
-boleto.mask();     // -> '34198.53241 94297.019419 40804.574073 7 16770000123456'`,
+boleto.mask();     // -> '34198.53241 94297.019419 40804.574073 7 16770000123456'
+
+// Campos decompostos
+boleto.bank;       // -> '341'
+boleto.amount;     // -> 1234.56 (em reais)
+boleto.expiresAt;  // -> 2026-12-31 (Date, ou null se não houver vencimento)
+boleto.freeField;  // -> '8532494297019414080457407'`,
   },
   {
     id: 'caepf',
