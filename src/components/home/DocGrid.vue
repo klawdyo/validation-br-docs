@@ -142,12 +142,17 @@ const current = computed(
   .dg-wrap {
     display: flex;
     flex-direction: column;
+    /* a regra base define align-items: start pro grid do desktop; sem
+       resetar pra stretch aqui, .dg-cards perde a largura definida e a
+       porcentagem de largura dos cards "vaza" pra um valor gigante */
+    align-items: stretch;
     gap: 24px;
   }
 
   .dg-cards {
     display: flex;
     flex-direction: row;
+    width: 100%;
     max-height: none;
     /* overflow-x: auto força o overflow-y computado a virar "auto" também
        (mesmo escrevendo "visible" aqui), então sem padding-top a borda do
