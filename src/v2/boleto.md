@@ -6,7 +6,9 @@ description: Valide boleto bancário em JavaScript ou TypeScript, convertendo en
 
 # Boleto
 
-Boleto bancário é o meio de cobrança e pagamento mais usado no Brasil fora de cartão e Pix. O validador entende tanto a **linha digitável** (47 dígitos, a sequência impressa pra digitar manualmente) quanto o **código de barras** (44 dígitos), convertendo entre os dois formatos e também expondo campos já decompostos: banco, valor, data de vencimento e o "campo livre".
+Valide boleto bancário com JavaScript e TypeScript.
+
+Use o validador de boleto para converter entre linha digitável e código de barras, extraia banco, valor e vencimento, e veja a implementação completa em JavaScript, TypeScript e Node.js com a validation-br. Boleto bancário é o meio de cobrança e pagamento mais usado no Brasil fora de cartão e Pix. O validador entende tanto a **linha digitável** (47 dígitos, a sequência impressa pra digitar manualmente) quanto o **código de barras** (44 dígitos), convertendo entre os dois formatos e também expondo campos já decompostos: banco, valor, data de vencimento e o "campo livre".
 
 <DocPlayground
   placeholder="Digite uma linha digitável ou código de barras para validar"

@@ -6,7 +6,9 @@ description: Valide qualquer chave Pix em JavaScript ou TypeScript, com reconhec
 
 # PIX Key
 
-Chave Pix é o apelido que identifica uma conta bancária pro Pix — pode ser um CPF, CNPJ, e-mail, telefone ou uma chave aleatória (EVP). Esse validador reconhece automaticamente qual desses tipos foi informado. É o validador mais indicado para campos genéricos de "chave Pix" em formulários de pagamento, já que evita ter que perguntar ao usuário qual tipo de chave ele está informando.
+Valide chave Pix com reconhecimento automático em JavaScript e TypeScript.
+
+Use o validador de chave Pix para reconhecer automaticamente CPF, CNPJ, e-mail, telefone ou chave aleatória (EVP), com implementação completa em JavaScript, TypeScript e Node.js na validation-br. Chave Pix é o apelido que identifica uma conta bancária pro Pix, e esse validador identifica sozinho qual desses tipos foi informado. É o validador mais indicado para campos genéricos de "chave Pix" em formulários de pagamento, já que evita ter que perguntar ao usuário qual tipo de chave ele está informando.
 
 <DocPlayground
   placeholder="Digite uma chave Pix para validar"

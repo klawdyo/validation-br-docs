@@ -6,7 +6,9 @@ description: Valide o código de rastreamento dos Correios em JavaScript ou Type
 
 # Código de Rastreamento Postal
 
-É o código que os Correios (e outras transportadoras que seguem o padrão internacional UPU) usam pra rastrear uma encomenda do envio até a entrega. Esse formato de 13 caracteres é um padrão internacional definido pela UPU (União Postal Universal), então o mesmo validador funciona tanto para envios nacionais quanto internacionais rastreados pelos Correios.
+Valide código de rastreio postal UPU com JavaScript e TypeScript.
+
+Use o validador de rastreamento postal para conferir o cálculo do dígito verificador no padrão internacional UPU, com implementação completa em JavaScript, TypeScript e Node.js na validation-br. É o código que os Correios (e outras transportadoras que seguem o padrão internacional UPU) usam pra rastrear uma encomenda do envio até a entrega. Esse formato de 13 caracteres é um padrão internacional definido pela UPU (União Postal Universal), então o mesmo validador funciona tanto para envios nacionais quanto internacionais rastreados pelos Correios.
 
 <DocPlayground
   placeholder="Digite um código de rastreamento para validar"

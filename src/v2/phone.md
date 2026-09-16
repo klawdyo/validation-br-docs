@@ -6,7 +6,9 @@ description: Valide telefones fixos e celulares brasileiros em JavaScript ou Typ
 
 # Telefone
 
-Validação básica de números de telefone brasileiros (fixo e celular, com ou sem DDI) — usada internamente como apoio pro `PixKey` reconhecer chaves do tipo telefone. Números de telefone aparecem em cadastros, autenticação por SMS e formulários de contato, então esse validador também pode ser usado isoladamente, fora do contexto do Pix.
+Valide telefone brasileiro com JavaScript e TypeScript.
+
+Use o validador de telefone para conferir números fixos e celulares, com ou sem DDI, isoladamente ou como apoio ao reconhecimento de chave Pix, com implementação completa em JavaScript, TypeScript e Node.js na validation-br. É uma validação básica de números de telefone brasileiros — usada internamente pro `PixKey` reconhecer chaves do tipo telefone. Números de telefone aparecem em cadastros, autenticação por SMS e formulários de contato, então esse validador também pode ser usado isoladamente, fora do contexto do Pix.
 
 ## Exemplos (API)
 

@@ -6,7 +6,9 @@ description: Valide o payload Pix Copia e Cola (BR Code) em JavaScript ou TypeSc
 
 # PIX Copy/Paste (BETA)
 
-É o texto que aparece quando alguém copia um Pix pra colar em outro app — não é a chave em si, é o código completo (BR Code) que já carrega valor, beneficiário e outras informações do pagamento. Aplicativos bancários geram esse texto ao criar uma cobrança, e é isso que costuma ser colado em um campo "Pix Copia e Cola" para efetuar o pagamento.
+Valide Pix Copia e Cola (BR Code) com JavaScript e TypeScript.
+
+Use o validador de Pix Copia e Cola para conferir o formato EMV e o CRC16 ao final da string, com implementação completa em JavaScript, TypeScript e Node.js na validation-br. É o texto que aparece quando alguém copia um Pix pra colar em outro app — não é a chave em si, é o código completo (BR Code) que já carrega valor, beneficiário e outras informações do pagamento. Aplicativos bancários geram esse texto ao criar uma cobrança, e é isso que costuma ser colado em um campo "Pix Copia e Cola" para efetuar o pagamento.
 
 <Callout type="warning" badge="Beta">
   Esta funcionalidade está em <strong>beta</strong> e não é recomendada

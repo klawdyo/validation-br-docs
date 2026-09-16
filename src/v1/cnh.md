@@ -6,7 +6,9 @@ description: Valide, formate e gere números de CNH em JavaScript e TypeScript c
 
 # CNH
 
-Validador para números de CNH (Carteira Nacional de Habilitação) — 11 dígitos, sendo os 2 últimos os dígitos verificadores. Esta página documenta a API de funções soltas da versão 1.x da `validation-br`, para uso em projetos JavaScript e TypeScript rodando em Node.js ou no navegador. As funções abaixo cobrem validação, formatação, normalização e geração de números de CNH de exemplo. Para projetos novos, veja a [versão 2.0](/v2/cnh), com API orientada a classes.
+Confira o dígito verificador da CNH com a função isCNH.
+
+Números de CNH (Carteira Nacional de Habilitação) têm 11 dígitos, sendo os 2 últimos os dígitos verificadores. Esta página documenta a API de funções soltas (`isCNH`, `mask`, `fake`...) da versão 1.x da `validation-br`, biblioteca JavaScript para Node.js e navegador. As funções abaixo cobrem validação, formatação, normalização e criação de CNH fake para testes e seeds. Para projetos novos, veja a [versão 2.0](/v2/cnh), com API orientada a classes.
 
 <DocPlayground
   placeholder="Digite uma CNH para validar"

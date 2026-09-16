@@ -6,7 +6,9 @@ description: Valide, formate e gere números de CNPJ, incluindo o formato alfanu
 
 # CNPJ
 
-O CNPJ identifica uma empresa perante a Receita Federal. Desde a Nota Técnica conjunta COCAD/SUARA/RFB nº 49/2024, o CNPJ pode ser alfanumérico — a biblioteca já valida e gera números nos dois formatos. Esta página documenta a API de funções soltas da versão 1.x da `validation-br`, para uso em projetos JavaScript e TypeScript rodando em Node.js ou no navegador. Para projetos novos, veja a [versão 2.0](/v2/cnpj), com API orientada a classes.
+Confira CNPJ, inclusive o formato alfanumérico, com a função isCNPJ.
+
+O CNPJ identifica uma empresa perante a Receita Federal. Desde a Nota Técnica conjunta COCAD/SUARA/RFB nº 49/2024, o CNPJ pode ser alfanumérico — a biblioteca já valida e cria números fake nos dois formatos. Esta página documenta a API de funções soltas (`isCNPJ`, `mask`, `fake`...) da versão 1.x da `validation-br`, biblioteca JavaScript para Node.js e navegador. Para projetos novos, veja a [versão 2.0](/v2/cnpj), com API orientada a classes.
 
 <DocPlayground
   placeholder="Digite um CNPJ para validar"

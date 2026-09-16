@@ -6,7 +6,9 @@ description: Entenda a classe Base da validation-br, escrita em TypeScript, que 
 
 # Base
 
-Classe base que todo validador da lib estende — não é usada diretamente, mas entender ela ajuda a entender o comportamento comum (imutabilidade, `.mask()`, `.toString()`) de qualquer documento. Toda classe de documento da validation-br (CPF, CNPJ, Boleto etc.) herda dela, então o comportamento descrito aqui é comum a todas: o valor é normalizado e congelado assim que a instância é criada, e `.toString()`/`.mask()` sempre retornam o mesmo resultado para a mesma instância. Conhecer a Base ajuda principalmente quem quer estender a biblioteca com um validador próprio ou entender por que todos se comportam de forma tão parecida entre si.
+Entenda a classe Base comum a todos os validadores em TypeScript.
+
+Veja como a classe Base dá imutabilidade, `.mask()` e `.toString()` consistentes a todo documento da validation-br, com implementação em TypeScript aplicável a qualquer validador construído sobre a biblioteca. É a classe base que todo validador da lib estende — não é usada diretamente, mas entender ela ajuda a entender o comportamento comum de qualquer documento. Toda classe de documento da validation-br (CPF, CNPJ, Boleto etc.) herda dela, então o comportamento descrito aqui é comum a todas: o valor é normalizado e congelado assim que a instância é criada, e `.toString()`/`.mask()` sempre retornam o mesmo resultado para a mesma instância. Conhecer a Base ajuda principalmente quem quer estender a biblioteca com um validador próprio ou entender por que todos se comportam de forma tão parecida entre si.
 
 ## Exemplo de uso
 

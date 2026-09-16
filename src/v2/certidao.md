@@ -6,7 +6,9 @@ description: Valide a matrícula de certidão de cartório no padrão nacional C
 
 # Certidão
 
-É o número de matrícula de uma certidão de cartório (nascimento, casamento, óbito etc.) no padrão nacional do CNJ — permite localizar e conferir a autenticidade da certidão em qualquer cartório do país, através do Sistema de Registro Civil (SIRC/CNJ), sem depender do cartório de origem. É comum em processos de habilitação de casamento, inventários e qualquer trâmite que exija comprovar um registro civil já existente.
+Valide matrícula de certidão CNJ com JavaScript e TypeScript.
+
+Use o validador de certidão para conferir a matrícula no padrão nacional do CNJ (SIRC), cobrindo nascimento, casamento, óbito e mais, com implementação completa em JavaScript, TypeScript e Node.js na validation-br. É o número de matrícula de uma certidão de cartório no padrão nacional do CNJ — permite localizar e conferir a autenticidade da certidão em qualquer cartório do país, através do Sistema de Registro Civil, sem depender do cartório de origem. É comum em processos de habilitação de casamento, inventários e qualquer trâmite que exija comprovar um registro civil já existente.
 
 <DocPlayground
   placeholder="Digite uma matrícula de certidão para validar"

@@ -5,13 +5,9 @@ description: Guia de migração da validation-br — como a API de funções sol
 
 # Migrando da 1.x para a 2.0
 
-A versão 2.0 reescreve a API de cada submódulo: em vez de funções soltas
-(`validate`, `dv`, `fake`, `mask`, `normalize`), cada documento agora é uma
-**classe imutável** que já valida o valor no construtor. Ao instanciar, o
-valor informado já é convertido para o formato interno normalizado e fica
-disponível em `.value` a partir daí — a instância funciona como um *value
-object*: pode ser guardada, passada adiante ou usada em qualquer lugar,
-sempre representando o mesmo documento.
+Migre da API de funções soltas da 1.x para as classes imutáveis da 2.0.
+
+Veja como a validation-br passou de funções soltas (`validate`, `dv`, `fake`, `mask`, `normalize`) para classes imutáveis em TypeScript, com exemplos de código para atualizar sua migração de versão. A versão 2.0 reescreve a API de cada submódulo: cada documento agora é uma **classe imutável** que já valida o valor no construtor. Ao instanciar, o valor informado já é convertido para o formato interno normalizado e fica disponível em `.value` a partir daí — a instância funciona como um *value object*: pode ser guardada, passada adiante ou usada em qualquer lugar, sempre representando o mesmo documento.
 
 As funções `isX` importadas diretamente de `validation-br` (ex.: `isCPF`,
 `isCNPJ`) continuam funcionando exatamente como antes — a mudança afeta só

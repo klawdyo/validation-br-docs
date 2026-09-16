@@ -6,7 +6,9 @@ description: Valide, formate e gere códigos de rastreamento dos Correios em Jav
 
 # Código de Rastreamento Postal
 
-Validador para códigos de rastreamento dos Correios no formato `XX000000000BR` (ex.: Sedex, carta registrada) — 13 caracteres. Esta página documenta a API de funções soltas da versão 1.x da `validation-br`, para uso em projetos JavaScript e TypeScript rodando em Node.js ou no navegador. As funções abaixo cobrem validação, normalização e geração de códigos de exemplo. Para projetos novos, veja a [versão 2.0](/v2/postal-track-code), com API orientada a classes.
+Confira códigos de rastreamento dos Correios com JavaScript.
+
+Código no formato `XX000000000BR` (ex.: Sedex, carta registrada) — 13 caracteres. Esta página documenta a API de funções soltas (`isTrackingCode`, `fake`...) da versão 1.x da `validation-br`, biblioteca JavaScript para Node.js e navegador. As funções abaixo cobrem validação, normalização e criação de códigos fake para testes. Para projetos novos, veja a [versão 2.0](/v2/postal-track-code), com API orientada a classes.
 
 <DocPlayground
   placeholder="Digite um código para validar"

@@ -6,7 +6,9 @@ description: Referência das funções utilitárias em TypeScript usadas pelos v
 
 # Utils
 
-Funções internas de apoio (cálculo de dígito verificador genérico, limpeza de valor, etc.) usadas por vários validadores da lib — a maioria das pessoas não precisa importar isso diretamente. Essas funções existem para evitar duplicação entre os validadores: o mesmo cálculo de módulo 11, por exemplo, aparece em CPF, CNPJ, CNH e vários outros documentos, e por isso vive centralizado aqui. Vale a pena conhecer esse módulo principalmente para quem quer estender a biblioteca com um validador próprio.
+Referência das funções utilitárias internas em TypeScript da validation-br.
+
+Veja como funcionam o cálculo de dígito verificador genérico, a limpeza de valor e outras funções internas usadas por vários validadores da biblioteca em TypeScript e Node.js. São funções de apoio usadas por vários validadores da lib — a maioria das pessoas não precisa importar isso diretamente. Elas existem para evitar duplicação entre os validadores: o mesmo cálculo de módulo 11, por exemplo, aparece em CPF, CNPJ, CNH e vários outros documentos, e por isso vive centralizado aqui. Vale a pena conhecer esse módulo principalmente para quem quer estender a biblioteca com um validador próprio.
 
 ## Funções principais
 

@@ -6,7 +6,9 @@ description: Valide, formate e gere números de telefone brasileiros em JavaScri
 
 # Telefone
 
-Validador para números de telefone brasileiros, fixos ou celulares, com ou sem DDD e com ou sem máscara. Esta página documenta a API de funções soltas da versão 1.x da `validation-br`, para uso em projetos JavaScript e TypeScript rodando em Node.js ou no navegador. As funções abaixo cobrem validação, máscara, normalização e geração de telefones de exemplo. Para projetos novos, veja a [versão 2.0](/v2/phone), com API orientada a classes.
+Confira telefones brasileiros com a função isPhone em JavaScript.
+
+A função valida números de telefone brasileiros, fixos ou celulares, com ou sem DDD e com ou sem máscara. Esta página documenta a API de funções soltas (`isPhone`, `mask`, `fake`...) da versão 1.x da `validation-br`, biblioteca JavaScript para Node.js e navegador. As funções abaixo cobrem validação, máscara, normalização e criação de telefones fake para testes. Para projetos novos, veja a [versão 2.0](/v2/phone), com API orientada a classes.
 
 <DocPlayground
   placeholder="Digite um telefone para validar"

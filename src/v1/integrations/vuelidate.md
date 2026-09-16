@@ -6,6 +6,8 @@ description: Descubra como validar CPF e CNPJ alfanumérico com Vuelidate na API
 
 # Integração com Vuelidate
 
+Ligue `isCPF` e `isCNPJ` do validation-br a um `$validator` do Vuelidate.
+
 O [Vuelidate](https://vuelidate-next.netlify.app/) é usado para validação de estado em aplicações Vue.js. Uma das funções `isX` do `validation-br` pode ser usada diretamente como um `$validator` customizado, tanto para CPF quanto para CNPJ — incluindo o formato alfanumérico de CNPJ. A mesma técnica usada abaixo para `cpfValido` vale, sem alterações, para criar um `cnpjValido` alfanumérico. Este guia usa a API de funções soltas da versão 1.x; para projetos novos, veja a [integração com Vuelidate na versão 2.0](/v2/integrations/vuelidate).
 
 ## Como validar CPF e CNPJ alfanumérico com Vuelidate
