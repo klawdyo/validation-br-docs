@@ -35,7 +35,7 @@ export default defineConfig({
 
     const pageTitle = pageData.frontmatter.title || title || Shared.name;
     const pageDescription = pageData.frontmatter.description || description || Shared.description;
-    const ogImage = `${Shared.url.replace(/\/$/, '')}/logo.svg`;
+    const ogImage = `${Shared.url.replace(/\/$/, '')}/logo.png`;
 
     return [
       ['link', { rel: 'canonical', href: canonicalUrl }],
@@ -58,6 +58,7 @@ export default defineConfig({
   },
 
   head: [
+    ['link', { rel: 'icon', type: 'image/png', href: '/logo.png' }],
     ['meta', { name: 'keywords', content: Shared.keywords }],
     ['meta', { name: 'author', content: 'validation-br' }],
     ['meta', { name: 'robots', content: 'index, follow' }],
@@ -110,7 +111,7 @@ export default defineConfig({
       },
     ],
 
-    logo: '/logo.svg',
+    logo: '/logo.png',
 
 
     sidebar: {
