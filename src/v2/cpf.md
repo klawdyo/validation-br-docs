@@ -6,7 +6,9 @@ description: Valide, formate e gere CPF em JavaScript ou TypeScript, com cálcul
 
 # CPF
 
-O CPF identifica uma pessoa física perante a Receita Federal — é o documento de identificação civil mais usado no Brasil, exigido em contratos, cadastros e serviços financeiros. Praticamente todo sistema brasileiro que lida com pessoas físicas precisa validar CPF em algum momento, seja em um formulário de cadastro, seja num backend que confere os dados antes de gravar no banco. Esta página documenta o validador de CPF da validation-br, uma biblioteca JavaScript e TypeScript para Node.js e navegador.
+Valide CPF e gere números de teste com JavaScript e TypeScript.
+
+Use o validador de CPF para conferir o dígito verificador, o gerador de CPF automático para criar números fake em testes e seeds, e veja a implementação completa em JavaScript, TypeScript e Node.js com a validation-br. O CPF identifica uma pessoa física perante a Receita Federal e é exigido em contratos, cadastros e serviços financeiros em todo o Brasil.
 
 <DocPlayground
   placeholder="Digite um CPF para validar"
