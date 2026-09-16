@@ -1,14 +1,14 @@
 ---
 outline: deep
-title: Integração com class-validator — CPF/CNPJ (NestJS)
-description: Valide CPF e CNPJ, incluindo o formato alfanumérico, com class-validator em decorators TypeScript, como usado em NestJS e TypeORM.
+title: Validar CPF e CNPJ alfanumérico com class-validator
+description: Veja como validar CPF e CNPJ alfanumérico com class-validator em DTOs TypeScript do NestJS, usando decorators baseados em isCPF e isCNPJ.
 ---
 
 # Integração com Class Validator
 
 O [class-validator](https://github.com/typestack/class-validator) é usado em NestJS, TypeORM e diversos outros frameworks baseados em decorators. Ele permite criar decorators customizados que reaproveitam uma das funções `isX` do `validation-br`. A mesma estrutura de decorator serve tanto para CPF quanto para CNPJ — incluindo o formato alfanumérico —, diretamente nas classes de DTO de uma API TypeScript, com a mesma sintaxe usada nos demais campos.
 
-## Exemplo (API)
+## Como validar CPF e CNPJ alfanumérico com class-validator
 
 ```ts
 import {

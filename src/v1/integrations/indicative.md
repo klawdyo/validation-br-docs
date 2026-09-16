@@ -1,14 +1,14 @@
 ---
 outline: deep
-title: Integração com Indicative (v1) — CPF/CNPJ no AdonisJS
-description: Guia da API legada 1.x — use o Indicative do AdonisJS 4 com a validation-br para validar CPF, CNPJ alfanumérico e outros docs brasileiros.
+title: Validar CPF/CNPJ alfanumérico com Indicative (v1)
+description: Veja como validar CPF e CNPJ alfanumérico com Indicative na API legada 1.x da validation-br, em projetos AdonisJS 4 legado.
 ---
 
 # Integração com Indicative
 
 [AdonisJS 4](https://legacy.adonisjs.com/docs/4.1/installation) usa [indicative](https://indicative-v5.adonisjs.com/) para realizar suas validações. Uma das funções `isX` do `validation-br` pode ser reaproveitada como uma regra customizada, seja para CPF ou para CNPJ — incluindo o formato alfanumérico de CNPJ. A mesma técnica abaixo, usada para criar a regra `cpf`, serve sem alterações para criar uma regra `cnpj` alfanumérico. Este guia usa a API de funções soltas da versão 1.x da `validation-br`, voltada a projetos Node.js e JavaScript que ainda usam o AdonisJS 4 legado.
 
-## Criar validação personalizada
+## Como validar CPF e CNPJ alfanumérico com Indicative no AdonisJS
 
 Crie um arquivo `validation_br.js` em seu diretório de validações customizadas, por exemplo `/app/Validators/extend/validation_br.js`.
 

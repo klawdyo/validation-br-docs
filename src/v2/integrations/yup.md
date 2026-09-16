@@ -1,14 +1,14 @@
 ---
 outline: deep
-title: Integração com Yup — validação de CPF/CNPJ (React)
-description: Estenda o Yup com a validation-br para validar CPF e CNPJ, incluindo o formato alfanumérico, em formulários JavaScript e TypeScript.
+title: Validar CPF e CNPJ alfanumérico com Yup
+description: Aprenda a validar CPF e CNPJ alfanumérico com Yup em formulários React, usando isCPF e isCNPJ da validation-br como regras customizadas.
 ---
 
 # Integração com Yup
 
 O [Yup](https://github.com/jquense/yup) é usado para validar esquemas e estado em aplicações React. Como ele permite estender seus métodos de string com `yup.addMethod`, uma das funções `isX` do `validation-br` pode ser reaproveitada como uma regra customizada (`.cpf()`, `.cnpj()` etc). A mesma técnica funciona tanto para CPF quanto para CNPJ, incluindo o formato alfanumérico. Depois de registrado, o método fica disponível em qualquer schema `yup.string()` do projeto, em JavaScript ou TypeScript.
 
-## Exemplo (API)
+## Como validar CPF e CNPJ alfanumérico com Yup
 
 ```js
 import * as yup from 'yup';
