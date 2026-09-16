@@ -2,9 +2,17 @@
 layout: doc
 sidebar: true
 lastUpdated: true
+title: validation-br v1 (legada) — validação de documentos brasileiros em JavaScript
+description: Documentação da versão 1.x (legada) da validation-br, biblioteca JavaScript para validar, formatar e gerar CPF, CNPJ, CNH, PIS/PASEP e outros documentos brasileiros em Node.js.
 ---
 
-# v1
+# validation-br v1 (legada)
+
+Versão 1.x da `validation-br`, biblioteca JavaScript para validação de
+documentos brasileiros em Node.js e no navegador, com funções soltas
+(`isCPF`, `validate`, `mask`, `fake`...) para cada tipo de documento. Para
+projetos novos, veja a [documentação da 2.0](/v2/), com API orientada a
+classes e tipagem TypeScript completa.
 
 ## Instalação
 

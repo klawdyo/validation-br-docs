@@ -19,7 +19,7 @@ export default defineConfig({
     hostname: Shared.url,
   },
 
-  transformHead({ page }) {
+  transformHead({ page, pageData, title, description }) {
     let clean = page.replace(/\.md$/, '');
     if (clean.endsWith('/index') || clean === 'index') {
       clean = clean.replace(/(^|\/)index$/, '');
@@ -33,12 +33,37 @@ export default defineConfig({
     const canonicalPath = clean ? `/${clean}` : '/';
     const canonicalUrl = `${Shared.url.replace(/\/$/, '')}${canonicalPath}`;
 
+    const pageTitle = pageData.frontmatter.title || title || Shared.name;
+    const pageDescription = pageData.frontmatter.description || description || Shared.description;
+    const ogImage = `${Shared.url.replace(/\/$/, '')}/logo.svg`;
+
     return [
       ['link', { rel: 'canonical', href: canonicalUrl }],
+
+      // Open Graph
+      ['meta', { property: 'og:type', content: 'website' }],
+      ['meta', { property: 'og:site_name', content: Shared.name }],
+      ['meta', { property: 'og:title', content: pageTitle }],
+      ['meta', { property: 'og:description', content: pageDescription }],
+      ['meta', { property: 'og:url', content: canonicalUrl }],
+      ['meta', { property: 'og:image', content: ogImage }],
+      ['meta', { property: 'og:locale', content: 'pt_BR' }],
+
+      // Twitter Card
+      ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
+      ['meta', { name: 'twitter:title', content: pageTitle }],
+      ['meta', { name: 'twitter:description', content: pageDescription }],
+      ['meta', { name: 'twitter:image', content: ogImage }],
     ];
   },
 
   head: [
+    ['meta', { name: 'keywords', content: Shared.keywords }],
+    ['meta', { name: 'author', content: 'validation-br' }],
+    ['meta', { name: 'robots', content: 'index, follow' }],
+    ['meta', { name: 'theme-color', content: '#0d18eb' }],
+    ['link', { rel: 'sitemap', type: 'application/xml', href: '/sitemap.xml' }],
+
     // <meta name="google-adsense-account" content="ca-pub-9643986318610515">
     ['meta', { name: 'google-adsense-account', content: 'ca-pub-9643986318610515' }],
     [

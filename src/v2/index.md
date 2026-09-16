@@ -1,10 +1,12 @@
 ---
 layout: home
+title: validation-br — Biblioteca JavaScript/TypeScript para documentos brasileiros
+description: Biblioteca JavaScript e TypeScript para validar, formatar e gerar CPF, CNPJ, CNH, PIS/PASEP, Boleto, Pix e outros documentos brasileiros, com suporte total a Node.js e ao navegador.
 
 hero:
   name: "validation-br"
   text: "2.0"
-  tagline: Valide, formate e gere documentos brasileiros com uma API orientada a classes — CPF, CNPJ, CNH, PIS/PASEP, placas, processos judiciais e muito mais.
+  tagline: A biblioteca JavaScript e TypeScript para validar, formatar e gerar documentos brasileiros — CPF, CNPJ, CNH, PIS/PASEP, placas, processos judiciais e muito mais, com suporte total a Node.js e ao navegador.
   actions:
     - theme: brand
       text: Começar agora →
@@ -84,6 +86,22 @@ As funções `isX` (ex. `isCPF`, `isCNPJ`) importadas direto de
 importava os submódulos diretamente.
 
 [Ver todas as breaking changes →](/v2/migration)
+
+</div>
+
+<div class="vp-doc" style="max-width: 720px; margin: 64px auto; text-align: center;">
+
+## Uma biblioteca JavaScript e TypeScript para Node.js e navegador
+
+`validation-br` é distribuída via [npm](https://npmjs.com/package/validation-br)
+como pacote JavaScript com tipagem TypeScript nativa incluída, sem
+necessidade de `@types` separados. Funciona em projetos Node.js (Express,
+NestJS, scripts de backend), em aplicações front-end com Vite, Webpack ou
+Next.js, e em qualquer ambiente que suporte ES Modules ou CommonJS.
+
+Todas as classes são tipadas ponta a ponta: autocomplete, inferência de
+tipos de retorno e checagem em tempo de compilação para quem usa
+TypeScript, sem esforço extra de configuração.
 
 </div>
 
