@@ -1,10 +1,12 @@
 ---
 outline: deep
+title: Integração com Joi — validação de CPF/CNPJ (Node.js)
+description: Use o Joi com a validation-br para validar CPF, CNPJ e outros documentos brasileiros em aplicações Node.js e JavaScript.
 ---
 
 # Integração com Joi
 
-O [Joi](https://github.com/hapijs/joi) é um validador de esquemas usado em aplicações Node, React, Vue etc. Ele suporta regras customizadas via `.custom()`, onde uma das funções `isX` do `validation-br` pode ser reaproveitada.
+O [Joi](https://github.com/hapijs/joi) é um validador de esquemas usado em aplicações Node, React, Vue etc. Ele suporta regras customizadas via `.custom()`, onde uma das funções `isX` do `validation-br` pode ser reaproveitada. Com isso, é possível validar CPF, CNPJ e outros documentos brasileiros dentro do mesmo schema Joi usado para validar o restante da requisição, sem código adicional fora dele.
 
 ## Exemplo (API)
 

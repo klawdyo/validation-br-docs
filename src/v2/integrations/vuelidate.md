@@ -1,10 +1,12 @@
 ---
 outline: deep
+title: Integração com Vuelidate — CPF/CNPJ em Vue.js
+description: Combine o Vuelidate com a validation-br para validar CPF, CNPJ e outros documentos brasileiros em aplicações Vue.js com JavaScript.
 ---
 
 # Integração com Vuelidate
 
-O [Vuelidate](https://vuelidate-next.netlify.app/) é usado para validação de estado em aplicações Vue.js. Uma das funções `isX` do `validation-br` pode ser usada diretamente como um `$validator` customizado.
+O [Vuelidate](https://vuelidate-next.netlify.app/) é usado para validação de estado em aplicações Vue.js. Uma das funções `isX` do `validation-br` pode ser usada diretamente como um `$validator` customizado. Assim, campos de CPF, CNPJ e outros documentos brasileiros ganham validação reativa junto com o restante das regras definidas no componente.
 
 ## Exemplo (API)
 
