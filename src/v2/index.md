@@ -6,7 +6,7 @@ description: Biblioteca JavaScript e TypeScript para validar, formatar e gerar C
 hero:
   name: "validation-br"
   text: "2.0"
-  tagline: A biblioteca JavaScript e TypeScript para validar, formatar e gerar documentos brasileiros — CPF, CNPJ, CNH, PIS/PASEP, placas, processos judiciais e muito mais, com suporte total a Node.js e ao navegador.
+  tagline: Valide, formate e gere documentos brasileiros em JavaScript e TypeScript — CPF, CNPJ, CNH, PIS/PASEP, placas, processos judiciais e muito mais.
   actions:
     - theme: brand
       text: Começar agora →
