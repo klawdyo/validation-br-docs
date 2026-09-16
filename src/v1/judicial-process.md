@@ -6,7 +6,9 @@ description: Valide, formate e gere números de processo judicial unificado (CNJ
 
 # Processo Judicial
 
-Validador para o número unificado de processos judiciais (Resolução CNJ nº 65/2008) — 20 caracteres, incluindo os 2 dígitos verificadores. Esta página documenta a API de funções soltas da versão 1.x da `validation-br`, para uso em projetos JavaScript e TypeScript rodando em Node.js ou no navegador. As funções abaixo cobrem validação, formatação, normalização e geração de números de exemplo. Para projetos novos, veja a [versão 2.0](/v2/judicial-process), com API orientada a classes.
+Confira e formate números de processo judicial (CNJ) com JavaScript.
+
+Número unificado de processos judiciais (Resolução CNJ nº 65/2008) — 20 caracteres, incluindo os 2 dígitos verificadores. Esta página documenta a API de funções soltas (`isProcessoJuridico`, `mask`, `fake`...) da versão 1.x da `validation-br`, biblioteca JavaScript para Node.js e navegador. As funções abaixo cobrem validação, formatação, normalização e criação de números de processo fake para testes. Para projetos novos, veja a [versão 2.0](/v2/judicial-process), com API orientada a classes.
 
 <DocPlayground
   placeholder="Digite um número de processo para validar"

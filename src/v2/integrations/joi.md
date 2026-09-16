@@ -6,7 +6,9 @@ description: Descubra como validar CPF e CNPJ alfanumérico com Joi em aplicaç�
 
 # Integração com Joi
 
-O [Joi](https://github.com/hapijs/joi) é um validador de esquemas usado em aplicações Node, React, Vue etc. Ele suporta regras customizadas via `.custom()`, onde uma das funções `isX` do `validation-br` pode ser reaproveitada. A mesma abordagem serve tanto para CPF quanto para CNPJ — incluindo o formato alfanumérico —, dentro do mesmo schema Joi usado para validar o restante da requisição, sem código adicional fora dele.
+Valide CPF e CNPJ alfanumérico com Joi em Node.js.
+
+Use o validador de CPF e CNPJ da validation-br — `isCPF` e `isCNPJ` — em uma regra `.custom()` do [Joi](https://github.com/hapijs/joi), o validador de esquemas usado em aplicações Node, React, Vue e outras. Veja como implementar essa validação em JavaScript e TypeScript: a mesma abordagem serve tanto para CPF quanto para CNPJ — incluindo o formato alfanumérico —, dentro do mesmo schema Joi usado para validar o restante da requisição, sem código adicional fora dele.
 
 ## Como validar CPF e CNPJ alfanumérico com Joi
 

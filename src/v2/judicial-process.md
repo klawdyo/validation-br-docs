@@ -6,7 +6,9 @@ description: Valide o número de processo judicial padrão CNJ em JavaScript ou 
 
 # Processo Judicial
 
-É o número que identifica um processo em qualquer tribunal do país desde 2010 — antes disso, cada tribunal tinha sua própria numeração, o que dificultava acompanhar um processo entre instâncias diferentes. O formato é usado pelo Judiciário, Ministério Público e sistemas de peticionamento eletrônico como PJe e e-SAJ. Este validador confere o dígito verificador e expõe os campos decompostos do número (ano, tribunal, órgão, origem).
+Valide número de processo judicial CNJ com JavaScript e TypeScript.
+
+Use o validador de processo judicial para conferir o dígito verificador em Módulo 97, extraia os campos decompostos do número (ano, tribunal, órgão, origem), e veja a implementação completa em JavaScript, TypeScript e Node.js com a validation-br. É o número que identifica um processo em qualquer tribunal do país desde 2010 — antes disso, cada tribunal tinha sua própria numeração, o que dificultava acompanhar um processo entre instâncias diferentes. O formato é usado pelo Judiciário, Ministério Público e sistemas de peticionamento eletrônico como PJe e e-SAJ.
 
 <DocPlayground
   placeholder="Digite um número de processo para validar"

@@ -6,7 +6,9 @@ description: Veja como validar CPF e CNPJ alfanumérico com Zod em TypeScript, u
 
 # Integração com Zod
 
-O [Zod](https://zod.dev/) é um validador de esquemas TypeScript-first, com suporte nativo a validações customizadas via `.refine()`. Uma das funções `isX` do `validation-br` pode ser usada diretamente como o predicado de um `refine`. A mesma técnica vale tanto para CPF quanto para CNPJ — incluindo o novo formato alfanumérico —, permitindo validar esses documentos brasileiros como parte do mesmo schema TypeScript usado para o restante do formulário ou payload, sem depender de bibliotecas adicionais.
+Valide CPF e CNPJ alfanumérico com Zod em TypeScript.
+
+Use o validador de CPF e CNPJ da validation-br — as funções `isCPF` e `isCNPJ` — como predicado de um `.refine()` do [Zod](https://zod.dev/), o validador de esquemas TypeScript-first com suporte nativo a validações customizadas. Veja como plugar esses documentos brasileiros em um schema `zod` em TypeScript e Node.js, cobrindo tanto CPF quanto CNPJ — incluindo o novo formato alfanumérico —, como parte do mesmo schema usado para validar o restante do formulário ou payload, sem depender de bibliotecas adicionais.
 
 ## Como validar CPF e CNPJ alfanumérico com Zod
 

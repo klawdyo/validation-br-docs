@@ -6,7 +6,9 @@ description: Valide CEP em JavaScript ou TypeScript, descubra a UF pela faixa nu
 
 # CEP
 
-CEP identifica uma área de entrega dos Correios — uma cidade, um bairro ou até um endereço específico, dependendo da faixa. Esse validador também sabe a qual UF cada faixa de CEP pertence. É um dos campos mais comuns em formulários de cadastro, checkout de e-commerce e sistemas de logística no Brasil.
+Valide CEP e descubra a UF pela faixa numérica com JavaScript e TypeScript.
+
+Use o validador de CEP para conferir o formato do código postal, a função que identifica a UF pela faixa numérica, e gere CEPs de exemplo para testes em Node.js ou no navegador com a validation-br. CEP identifica uma área de entrega dos Correios — uma cidade, um bairro ou até um endereço específico, dependendo da faixa. É um dos campos mais comuns em formulários de cadastro, checkout de e-commerce e sistemas de logística no Brasil.
 
 <Callout type="warning">
   Este validador só confere o <strong>formato</strong> do CEP (e,

@@ -6,7 +6,9 @@ description: Valide o formato de e-mail com JavaScript ou TypeScript, útil como
 
 # Email
 
-Validação básica de formato de e-mail — usada internamente como apoio pro `PixKey` reconhecer chaves do tipo e-mail, mas pode ser usada sozinha também. É útil para checar rapidamente um campo de e-mail em formulários de cadastro sem precisar de uma dependência separada só para isso. Por fazer parte de uma biblioteca JavaScript e TypeScript, funciona tanto em Node.js quanto diretamente no navegador.
+Valide formato de e-mail com JavaScript e TypeScript.
+
+Use o validador de e-mail para conferir rapidamente o formato de um endereço, isoladamente ou como apoio interno ao reconhecimento de chave Pix, com implementação completa em JavaScript, TypeScript e Node.js na validation-br. É uma validação básica de formato de e-mail — usada internamente pro `PixKey` reconhecer chaves do tipo e-mail, mas também é útil para checar rapidamente um campo de e-mail em formulários de cadastro sem precisar de uma dependência separada só para isso. Por fazer parte de uma biblioteca JavaScript e TypeScript, funciona tanto em Node.js quanto diretamente no navegador.
 
 ## Exemplos (API)
 

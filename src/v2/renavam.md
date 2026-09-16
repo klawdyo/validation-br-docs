@@ -6,7 +6,9 @@ description: Valide o RENAVAM em JavaScript ou TypeScript, confira o dígito ver
 
 # RENAVAM
 
-RENAVAM é o registro nacional de um veículo no DETRAN — é único por veículo e acompanha ele mesmo que a placa, o dono ou o estado mudem. É usado em consultas de multas, IPVA, licenciamento e transferências de propriedade, sempre vinculado ao mesmo veículo ao longo da vida dele.
+Valide RENAVAM e gere números de teste com JavaScript e TypeScript.
+
+Use o validador de RENAVAM para conferir o dígito verificador do registro nacional de veículos, o gerador automático para criar exemplos em testes, e veja a implementação completa em JavaScript, TypeScript e Node.js com a validation-br. RENAVAM é o registro nacional de um veículo no DETRAN — é único por veículo e acompanha ele mesmo que a placa, o dono ou o estado mudem. É usado em consultas de multas, IPVA, licenciamento e transferências de propriedade, sempre vinculado ao mesmo veículo ao longo da vida dele.
 
 <DocPlayground
   placeholder="Digite um RENAVAM para validar"

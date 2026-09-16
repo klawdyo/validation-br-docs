@@ -6,7 +6,9 @@ description: Valide o Número Único de Protocolo (NUP17) em JavaScript, confira
 
 # NUP17
 
-NUP17 identifica um processo ou protocolo dentro dos órgãos do Governo Federal — permite acompanhar o mesmo processo em qualquer sistema do Executivo, não só no órgão de origem. O formato substituiu numerações internas que cada órgão usava separadamente, padronizando o protocolo em toda a administração pública federal. Este validador confere o formato e o dígito verificador do número, útil para sistemas que integram com órgãos do governo.
+Valide NUP17 e gere protocolos de teste com JavaScript e TypeScript.
+
+Use o validador de NUP17 para conferir o formato e o dígito verificador do Número Único de Protocolo, e gere exemplos válidos para testar integrações com sistemas do governo em JavaScript, TypeScript e Node.js com a validation-br. NUP17 identifica um processo ou protocolo dentro dos órgãos do Governo Federal — permite acompanhar o mesmo processo em qualquer sistema do Executivo, não só no órgão de origem. O formato substituiu numerações internas que cada órgão usava separadamente, padronizando o protocolo em toda a administração pública federal.
 
 <DocPlayground
   placeholder="Digite um NUP17 para validar"

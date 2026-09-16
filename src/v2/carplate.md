@@ -6,7 +6,9 @@ description: Valide placas de veículo no formato antigo e no padrão Mercosul c
 
 # Placa (CarPlate)
 
-A placa identifica um veículo de forma única perante o DETRAN — o Brasil está em transição do formato antigo (AAA-0000) pro padrão Mercosul (AAA0A00), e o validador aceita os dois. Sistemas de gestão de frota, seguro veicular e consulta de multas de trânsito dependem desse identificador para localizar um veículo específico.
+Valide placa de veículo e gere placas de teste com JavaScript e TypeScript.
+
+Use o validador de placa de veículo para conferir o formato antigo e o padrão Mercosul, o gerador de placas automático para criar exemplos em testes, e veja a implementação completa em JavaScript, TypeScript e Node.js com a validation-br. A placa identifica um veículo de forma única perante o DETRAN — o Brasil está em transição do formato antigo (AAA-0000) pro padrão Mercosul (AAA0A00), e o validador aceita os dois. Sistemas de gestão de frota, seguro veicular e consulta de multas de trânsito dependem desse identificador para localizar um veículo específico.
 
 <DocPlayground
   placeholder="Digite uma placa para validar"

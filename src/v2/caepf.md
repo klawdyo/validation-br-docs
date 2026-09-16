@@ -6,7 +6,9 @@ description: Valide o CAEPF em JavaScript ou TypeScript, o cadastro de atividade
 
 # CAEPF
 
-CAEPF identifica, perante a Receita Federal, uma atividade econômica exercida por uma pessoa física que não tem CNPJ — o caso mais comum é produtor rural e segurado especial (quem trabalha em regime de economia familiar na agricultura, sem ser empregado nem ter empresa constituída). Substituiu o antigo cadastro CEI da Receita/INSS. É usado em declarações à Receita Federal, GFIP/eSocial e outros sistemas que precisam identificar a atividade rural separadamente do CPF da pessoa.
+Valide CAEPF com JavaScript e TypeScript.
+
+Use o validador de CAEPF para conferir o cálculo dos dígitos verificadores do cadastro de atividade econômica de pessoa física, e veja a implementação completa em JavaScript, TypeScript e Node.js com a validation-br. CAEPF identifica, perante a Receita Federal, uma atividade econômica exercida por uma pessoa física que não tem CNPJ — o caso mais comum é produtor rural e segurado especial (quem trabalha em regime de economia familiar na agricultura, sem ser empregado nem ter empresa constituída). Substituiu o antigo cadastro CEI da Receita/INSS. É usado em declarações à Receita Federal, GFIP/eSocial e outros sistemas que precisam identificar a atividade rural separadamente do CPF da pessoa.
 
 <DocPlayground
   placeholder="Digite um CAEPF para validar"

@@ -6,7 +6,9 @@ description: Valide o Título de Eleitor em JavaScript ou TypeScript, confira os
 
 # Título de Eleitor
 
-É o documento que comprova o registro de um eleitor perante a Justiça Eleitoral e o habilita a votar — também aceito como identificação em diversos serviços. É emitido pelo TSE e costuma ser exigido em concursos públicos, cadastros de programas sociais e outros serviços que pedem comprovação de situação eleitoral regular.
+Valide Título de Eleitor e gere números de teste com JavaScript e TypeScript.
+
+Use o validador de Título de Eleitor para conferir os dois dígitos verificadores, o gerador de títulos automático para criar exemplos em testes automatizados, e veja a implementação completa em JavaScript, TypeScript e Node.js com a validation-br. É o documento que comprova o registro de um eleitor perante a Justiça Eleitoral e o habilita a votar — também aceito como identificação em diversos serviços. É emitido pelo TSE e costuma ser exigido em concursos públicos, cadastros de programas sociais e outros serviços que pedem comprovação de situação eleitoral regular.
 
 <DocPlayground
   placeholder="Digite um Título de Eleitor para validar"
