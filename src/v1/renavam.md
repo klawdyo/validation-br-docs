@@ -1,10 +1,12 @@
 ---
 outline: deep
+title: RENAVAM — validação em JavaScript e TypeScript (v1)
+description: Valide, formate e gere números de RENAVAM em JavaScript e TypeScript com a API legada 1.x da validation-br, para Node.js e navegador.
 ---
 
 # RENAVAM
 
-RENAVAM é o registro nacional de um veículo no DETRAN — 11 caracteres, sendo o último o dígito verificador.
+RENAVAM é o registro nacional de um veículo no DETRAN — 11 caracteres, sendo o último o dígito verificador. Esta página documenta a API de funções soltas da versão 1.x da `validation-br`, para uso em projetos JavaScript e TypeScript rodando em Node.js ou no navegador. As funções abaixo cobrem validação, formatação, normalização e geração de números de exemplo. Para projetos novos, veja a [versão 2.0](/v2/renavam), com API orientada a classes.
 
 <DocPlayground
   placeholder="Digite um RENAVAM para validar"

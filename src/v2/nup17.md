@@ -1,10 +1,12 @@
 ---
 outline: deep
+title: NUP17 — protocolo do Governo Federal
+description: Valide o Número Único de Protocolo (NUP17) em JavaScript, confira o dígito verificador e gere exemplos válidos para testar sistemas do governo.
 ---
 
 # NUP17
 
-NUP17 identifica um processo ou protocolo dentro dos órgãos do Governo Federal — permite acompanhar o mesmo processo em qualquer sistema do Executivo, não só no órgão de origem.
+NUP17 identifica um processo ou protocolo dentro dos órgãos do Governo Federal — permite acompanhar o mesmo processo em qualquer sistema do Executivo, não só no órgão de origem. O formato substituiu numerações internas que cada órgão usava separadamente, padronizando o protocolo em toda a administração pública federal. Este validador confere o formato e o dígito verificador do número, útil para sistemas que integram com órgãos do governo.
 
 <DocPlayground
   placeholder="Digite um NUP17 para validar"

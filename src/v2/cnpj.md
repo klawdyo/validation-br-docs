@@ -1,10 +1,12 @@
 ---
 outline: deep
+title: CNPJ — validação numérica e alfanumérica
+description: Valide, formate e gere CNPJ em JavaScript ou TypeScript, incluindo o novo CNPJ alfanumérico, com suporte completo a Node.js e ao navegador.
 ---
 
 # CNPJ
 
-O CNPJ identifica uma empresa (ou outra entidade jurídica) perante a Receita Federal — é o CPF das pessoas jurídicas, exigido pra abrir conta bancária, emitir nota fiscal e formalizar qualquer contrato empresarial.
+O CNPJ identifica uma empresa (ou outra entidade jurídica) perante a Receita Federal — é o CPF das pessoas jurídicas, exigido pra abrir conta bancária, emitir nota fiscal e formalizar qualquer contrato empresarial. Por ser um dos documentos mais validados em sistemas de cadastro empresarial, contar com uma biblioteca JavaScript e TypeScript testada e com tipagem completa ajuda a evitar implementações caseiras do cálculo do dígito verificador.
 
 <Callout type="new">
   <strong>validation-br suporta CNPJ alfanumérico.</strong> A partir da

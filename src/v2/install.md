@@ -1,4 +1,14 @@
+---
+title: Instalação — validation-br via npm, yarn ou pnpm
+description: Como instalar a validation-br, biblioteca JavaScript e TypeScript para validar documentos brasileiros, via npm, yarn ou pnpm em projetos Node.js.
+---
+
 # Instalação
+
+`validation-br` está publicada no [npm](https://npmjs.com/package/validation-br)
+e pode ser instalada com qualquer gerenciador de pacotes JavaScript, em
+projetos Node.js (backend, CLI, scripts) ou em aplicações front-end
+(React, Vue, Angular, Next.js):
 
 ```sh
 # npm
@@ -13,7 +23,7 @@ pnpm add validation-br
 
 O pacote é distribuído com build duplo, compatível tanto com `require`
 (CommonJS) quanto com `import` (ES Modules), com tipos TypeScript
-inclusos.
+inclusos, sem necessidade de instalar `@types/validation-br` à parte.
 
 ## Importação direta
 

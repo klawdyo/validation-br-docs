@@ -1,10 +1,12 @@
 ---
 outline: deep
+title: PIS/PASEP — identificação do trabalhador
+description: Valide PIS, PASEP, NIS e NIT em JavaScript ou TypeScript com um único algoritmo, incluindo cálculo de dígito verificador e geração de exemplos.
 ---
 
 # PIS / PASEP
 
-PIS/PASEP/NIS/NIT são o mesmo número usado como identificação do trabalhador — dá acesso a FGTS, seguro-desemprego, abono salarial e outros benefícios trabalhistas.
+PIS/PASEP/NIS/NIT são o mesmo número usado como identificação do trabalhador — dá acesso a FGTS, seguro-desemprego, abono salarial e outros benefícios trabalhistas. O número costuma ser emitido no primeiro emprego formal e acompanha o trabalhador pela vida toda, então esse validador é comum em folhas de pagamento, admissões e sistemas de RH.
 
 <DocPlayground
   placeholder="Digite um PIS/PASEP para validar"

@@ -1,10 +1,12 @@
 ---
 outline: deep
+title: UUID — validação de identificadores
+description: Valide identificadores UUID em JavaScript ou TypeScript, use como validador isolado ou como apoio interno ao reconhecimento de chave Pix aleatória.
 ---
 
 # UUID
 
-Validação de identificadores UUID — usada internamente como apoio pro `PixKey` reconhecer chaves aleatórias (EVP), que são sempre um UUID.
+Validação de identificadores UUID — usada internamente como apoio pro `PixKey` reconhecer chaves aleatórias (EVP), que são sempre um UUID. UUIDs também aparecem como identificador único em bancos de dados, filas e APIs, então esse validador pode ser usado sozinho, fora do contexto do Pix. Como o restante da biblioteca, funciona tanto em Node.js quanto no navegador, com tipos TypeScript inclusos.
 
 ## Exemplos (API)
 

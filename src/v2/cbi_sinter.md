@@ -1,10 +1,12 @@
 ---
 outline: deep
+title: CBI/SINTER — Código Imobiliário Brasileiro
+description: Valide o CIB do SINTER em JavaScript, com decodificação em Base 32 de Crockford e cálculo do dígito verificador para sistemas de registro de imóveis.
 ---
 
 # CBI/SINTER
 
-CIB (Código Imobiliário Brasileiro) é o identificador único de um imóvel a nível nacional, criado pelo SINTER (Sistema Nacional de Gestão de Informações Territoriais, gerido pela Receita Federal) — o equivalente, pra imóveis, ao CPF/CNPJ pra pessoas: permite cruzar informação do mesmo imóvel entre diferentes cartórios e municípios sem depender da matrícula local de cada um.
+CIB (Código Imobiliário Brasileiro) é o identificador único de um imóvel a nível nacional, criado pelo SINTER (Sistema Nacional de Gestão de Informações Territoriais, gerido pela Receita Federal) — o equivalente, pra imóveis, ao CPF/CNPJ pra pessoas: permite cruzar informação do mesmo imóvel entre diferentes cartórios e municípios sem depender da matrícula local de cada um. É útil para sistemas de cartório, due diligence imobiliária e integrações com bases da Receita Federal e prefeituras.
 
 <DocPlayground
   placeholder="Digite um código CBI/SINTER para validar"
