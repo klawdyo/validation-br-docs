@@ -1,3 +1,8 @@
+---
+title: Migração 1.x → 2.0 — guia de breaking changes
+description: Guia de migração da validation-br — como a API de funções soltas da versão 1.x virou classes imutáveis em TypeScript na versão 2.0, com exemplos.
+---
+
 # Migrando da 1.x para a 2.0
 
 A versão 2.0 reescreve a API de cada submódulo: em vez de funções soltas

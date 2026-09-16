@@ -1,10 +1,12 @@
 ---
 outline: deep
+title: Título de Eleitor — validação em JS e TS (v1)
+description: Valide, formate e gere números de título de eleitor em JavaScript e TypeScript com a API legada 1.x da validation-br, para Node.js e navegador.
 ---
 
 # Título de Eleitor
 
-Validador para números de título de eleitor — 12 dígitos, sendo os dígitos 9-10 a UF de emissão e os 2 últimos os dígitos verificadores.
+Validador para números de título de eleitor — 12 dígitos, sendo os dígitos 9-10 a UF de emissão e os 2 últimos os dígitos verificadores. Esta página documenta a API de funções soltas da versão 1.x da `validation-br`, para uso em projetos JavaScript e TypeScript rodando em Node.js ou no navegador. As funções abaixo cobrem validação, formatação, normalização e geração de títulos de exemplo. Para projetos novos, veja a [versão 2.0](/v2/tituloEleitor), com API orientada a classes.
 
 <DocPlayground
   placeholder="Digite um título de eleitor para validar"

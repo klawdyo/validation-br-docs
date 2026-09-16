@@ -1,10 +1,12 @@
 ---
 outline: deep
+title: NUP17 — validação em JavaScript e TypeScript (v1)
+description: Valide, formate e gere números de NUP17 (Protocolo Único) em JavaScript e TypeScript com a API legada 1.x da validation-br, para Node.js e navegador.
 ---
 
 # NUP17
 
-Validador para o Número Único de Protocolo do Governo Federal (NUP17) — 17 caracteres, incluindo os 2 dígitos verificadores.
+Validador para o Número Único de Protocolo do Governo Federal (NUP17) — 17 caracteres, incluindo os 2 dígitos verificadores. Esta página documenta a API de funções soltas da versão 1.x da `validation-br`, para uso em projetos JavaScript e TypeScript rodando em Node.js ou no navegador. As funções abaixo cobrem validação, formatação, normalização e geração de números de NUP17 de exemplo. Para projetos novos, veja a [versão 2.0](/v2/nup17), com API orientada a classes.
 
 <DocPlayground
   placeholder="Digite um NUP17 para validar"

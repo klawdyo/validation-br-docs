@@ -1,5 +1,7 @@
 ---
 outline: deep
+title: Boleto — linha digitável e código de barras
+description: Valide boleto bancário em JavaScript ou TypeScript, convertendo entre linha digitável e código de barras e extraindo banco, valor e vencimento.
 ---
 
 # Boleto

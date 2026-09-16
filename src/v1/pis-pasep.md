@@ -1,10 +1,12 @@
 ---
 outline: deep
+title: PIS/PASEP — validação em JavaScript e TypeScript (v1)
+description: Valide, formate e gere números de PIS/PASEP/NIS/NIT em JavaScript e TypeScript com a API legada 1.x da validation-br, para Node.js e navegador.
 ---
 
 # PIS/PASEP
 
-Validador para números de PIS/PASEP/NIS/NIT — 11 dígitos, sendo o último o dígito verificador. O formato não é validado: `26827649960` é equivalente a `268.27649.96-0`.
+Validador para números de PIS/PASEP/NIS/NIT — 11 dígitos, sendo o último o dígito verificador. O formato não é validado: `26827649960` é equivalente a `268.27649.96-0`. Esta página documenta a API de funções soltas da versão 1.x da `validation-br`, para uso em projetos JavaScript e TypeScript rodando em Node.js ou no navegador. Para projetos novos, veja a [versão 2.0](/v2/pis-pasep), com API orientada a classes.
 
 <DocPlayground
   placeholder="Digite um PIS/PASEP para validar"

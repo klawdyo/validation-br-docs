@@ -1,10 +1,12 @@
 ---
 outline: deep
+title: Integração com class-validator (v1) — NestJS
+description: Guia da API legada 1.x — valide CPF, CNPJ e outros documentos brasileiros com class-validator em decorators TypeScript, usado em NestJS.
 ---
 
 # Integração com Class Validator
 
-O [class-validator](https://github.com/typestack/class-validator) é usado em NestJS, TypeORM e diversos outros frameworks baseados em decorators. Ele permite criar decorators customizados que reaproveitam uma das funções `isX` do `validation-br`.
+O [class-validator](https://github.com/typestack/class-validator) é usado em NestJS, TypeORM e diversos outros frameworks baseados em decorators. Ele permite criar decorators customizados que reaproveitam uma das funções `isX` do `validation-br`. Este guia usa a API de funções soltas da versão 1.x; para projetos novos, veja a [integração com class-validator na versão 2.0](/v2/integrations/class-validator).
 
 ## Criar validação personalizada
 

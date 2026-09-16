@@ -1,10 +1,12 @@
 ---
 outline: deep
+title: Integração com Indicative (v1) — CPF/CNPJ no AdonisJS
+description: Guia da API legada 1.x — use o Indicative do AdonisJS 4 com a validation-br para validar CPF, CNPJ e documentos brasileiros em Node.js.
 ---
 
 # Integração com Indicative
 
-[AdonisJS 4](https://legacy.adonisjs.com/docs/4.1/installation) usa [indicative](https://indicative-v5.adonisjs.com/) para realizar suas validações. Uma das funções `isX` do `validation-br` pode ser reaproveitada como uma regra customizada.
+[AdonisJS 4](https://legacy.adonisjs.com/docs/4.1/installation) usa [indicative](https://indicative-v5.adonisjs.com/) para realizar suas validações. Uma das funções `isX` do `validation-br` pode ser reaproveitada como uma regra customizada. Este guia usa a API de funções soltas da versão 1.x da `validation-br`, voltada a projetos Node.js e JavaScript que ainda usam o AdonisJS 4 legado.
 
 ## Criar validação personalizada
 

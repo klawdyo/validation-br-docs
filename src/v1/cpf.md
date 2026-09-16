@@ -1,10 +1,12 @@
 ---
 outline: deep
+title: CPF — validação em JavaScript e TypeScript (v1)
+description: Valide, formate e gere números de CPF em JavaScript e TypeScript com a API legada 1.x da validation-br, para Node.js e navegador.
 ---
 
 # CPF
 
-O CPF identifica uma pessoa física perante a Receita Federal — é o documento de identificação civil mais usado no Brasil, exigido em contratos, cadastros e serviços financeiros.
+O CPF identifica uma pessoa física perante a Receita Federal — é o documento de identificação civil mais usado no Brasil, exigido em contratos, cadastros e serviços financeiros. Esta página documenta a API de funções soltas da versão 1.x da `validation-br`, para uso em projetos JavaScript e TypeScript rodando em Node.js ou no navegador. As funções abaixo cobrem validação, formatação, normalização e geração de CPFs de exemplo. Para projetos novos, veja a [versão 2.0](/v2/cpf), com API orientada a classes.
 
 <DocPlayground
   placeholder="Digite um CPF para validar"

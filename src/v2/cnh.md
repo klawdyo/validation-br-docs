@@ -1,10 +1,12 @@
 ---
 outline: deep
+title: CNH — validação da Carteira de Habilitação
+description: Valide a CNH em JavaScript ou TypeScript, confira os dois dígitos verificadores da Carteira Nacional de Habilitação e gere exemplos para testes.
 ---
 
 # CNH
 
-A CNH é o documento que autoriza alguém a dirigir veículos no Brasil, emitido pelo DETRAN — o número de registro é único por condutor.
+A CNH é o documento que autoriza alguém a dirigir veículos no Brasil, emitido pelo DETRAN — o número de registro é único por condutor. É exigido em locadoras de veículos, apps de transporte e qualquer cadastro que precise confirmar que a pessoa está habilitada a dirigir.
 
 <DocPlayground
   placeholder="Digite uma CNH para validar"
