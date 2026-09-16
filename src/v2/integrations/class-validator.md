@@ -1,12 +1,12 @@
 ---
 outline: deep
 title: Integração com class-validator — CPF/CNPJ (NestJS)
-description: Valide CPF, CNPJ e outros documentos brasileiros com class-validator em decorators TypeScript, como usado em NestJS e TypeORM.
+description: Valide CPF e CNPJ, incluindo o formato alfanumérico, com class-validator em decorators TypeScript, como usado em NestJS e TypeORM.
 ---
 
 # Integração com Class Validator
 
-O [class-validator](https://github.com/typestack/class-validator) é usado em NestJS, TypeORM e diversos outros frameworks baseados em decorators. Ele permite criar decorators customizados que reaproveitam uma das funções `isX` do `validation-br`. Isso permite validar CPF, CNPJ e outros documentos brasileiros diretamente nas classes de DTO de uma API TypeScript, com a mesma sintaxe de decorators usada nos demais campos.
+O [class-validator](https://github.com/typestack/class-validator) é usado em NestJS, TypeORM e diversos outros frameworks baseados em decorators. Ele permite criar decorators customizados que reaproveitam uma das funções `isX` do `validation-br`. A mesma estrutura de decorator serve tanto para CPF quanto para CNPJ — incluindo o formato alfanumérico —, diretamente nas classes de DTO de uma API TypeScript, com a mesma sintaxe usada nos demais campos.
 
 ## Exemplo (API)
 
@@ -37,6 +37,40 @@ export function IsCpf(validationOptions?: ValidationOptions) {
       options: validationOptions,
       constraints: [],
       validator: IsCpfConstraint,
+    });
+  };
+}
+```
+
+O mesmo decorator pode ser criado para CNPJ. `isCnpj` já valida CNPJ alfanumérico (novo formato, a partir de 2026) além do formato numérico, então nenhuma lógica extra é necessária:
+
+```ts
+import {
+  registerDecorator,
+  ValidationOptions,
+  ValidatorConstraint,
+  ValidatorConstraintInterface,
+} from 'class-validator';
+import { isCNPJ } from 'validation-br';
+
+@ValidatorConstraint({ async: false })
+export class IsCnpjConstraint implements ValidatorConstraintInterface {
+  validate(cnpj: any) {
+    return isCNPJ(cnpj);
+  }
+  defaultMessage() {
+    return 'CNPJ inválido';
+  }
+}
+
+export function IsCnpj(validationOptions?: ValidationOptions) {
+  return function (object: any, propertyName: string) {
+    registerDecorator({
+      target: object.constructor,
+      propertyName,
+      options: validationOptions,
+      constraints: [],
+      validator: IsCnpjConstraint,
     });
   };
 }

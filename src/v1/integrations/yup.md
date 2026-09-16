@@ -1,12 +1,12 @@
 ---
 outline: deep
 title: Integração com Yup (v1) — CPF/CNPJ em React
-description: Guia da API legada 1.x — estenda o Yup com a validation-br para validar CPF, CNPJ e outros documentos brasileiros em JavaScript.
+description: Guia da API legada 1.x — estenda o Yup com a validation-br para validar CPF, CNPJ alfanumérico e outros documentos brasileiros.
 ---
 
 # Integração com Yup
 
-O [Yup](https://github.com/jquense/yup) é usado para validar esquemas e estado em aplicações React. Como ele permite estender seus métodos de string com `yup.addMethod`, uma das funções `isX` do `validation-br` pode ser reaproveitada como uma regra customizada (`.cpf()`, `.cnpj()` etc). Este guia usa a API de funções soltas da versão 1.x; para projetos novos, veja a [integração com Yup na versão 2.0](/v2/integrations/yup).
+O [Yup](https://github.com/jquense/yup) é usado para validar esquemas e estado em aplicações React. Como ele permite estender seus métodos de string com `yup.addMethod`, uma das funções `isX` do `validation-br` pode ser reaproveitada como uma regra customizada (`.cpf()`, `.cnpj()` etc), inclusive validando o formato alfanumérico de CNPJ. A mesma técnica usada abaixo para `.cpf()` vale, sem alterações, para criar um `.cnpj()` que aceita CNPJ alfanumérico. Este guia usa a API de funções soltas da versão 1.x; para projetos novos, veja a [integração com Yup na versão 2.0](/v2/integrations/yup).
 
 ## Criar validação personalizada
 
@@ -19,13 +19,25 @@ yup.addMethod(yup.string, 'cpf', function (message) {
 });
 ```
 
+O mesmo padrão serve para CNPJ:
+
+```js
+import { isCNPJ } from 'validation-br';
+
+yup.addMethod(yup.string, 'cnpj', function (message) {
+  // já valida CNPJ alfanumérico (novo formato, a partir de 2026)
+  return this.test('cnpj', message ?? 'CNPJ inválido', (value) => isCNPJ(value));
+});
+```
+
 ## Como usar
 
-`cpf()` já está disponível para uso dentro do Yup:
+`cpf()` e `cnpj()` já estão disponíveis para uso dentro do Yup:
 
 ```js
 const schema = yup.object().shape({
   cpf: yup.string().required().cpf(),
+  cnpj: yup.string().required().cnpj(),
 });
 ```
 

@@ -1,7 +1,7 @@
 ---
 outline: deep
 title: Integração com class-validator (v1) — NestJS
-description: Guia da API legada 1.x — valide CPF, CNPJ e outros documentos brasileiros com class-validator em decorators TypeScript, usado em NestJS.
+description: Guia da API legada 1.x — valide CPF, CNPJ alfanumérico e outros documentos brasileiros com class-validator em decorators TypeScript.
 ---
 
 # Integração com Class Validator
