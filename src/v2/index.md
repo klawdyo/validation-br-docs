@@ -16,7 +16,7 @@ hero:
       link: '#o-que-valida'
     - theme: alt
       text: Documentação da v1.x (legacy)
-      link: /v1/
+      link: /v1
 
 features:
   - icon: 🧩

@@ -4,7 +4,7 @@ import { DefaultTheme } from 'vitepress';
 
 export const sideBar: DefaultTheme.SidebarItem[] = [
       // { text: 'Home', link: '/v1' },
-      { text: 'Instalação', link: '/v1/' },
+      { text: 'Instalação', link: '/v1' },
       // { text: path.resolve(__dirname, '../../../../', '.vitepress'), link: '/v1/install' },
 
       {

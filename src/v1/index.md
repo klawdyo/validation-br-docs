@@ -13,7 +13,7 @@ Biblioteca JavaScript com funções prontas para validar documentos brasileiros.
 Versão 1.x da `validation-br` traz funções soltas (`isCPF`, `isCNPJ`,
 `validate`, `mask`, `fake`...) para cada tipo de documento, prontas para uso
 em Node.js e no navegador, sem necessidade de instanciar classes. Para
-projetos novos, veja a [documentação da 2.0](/v2/), com API orientada a
+projetos novos, veja a <a href="/v2">documentação da 2.0</a>, com API orientada a
 classes e tipagem TypeScript completa.
 
 ## Instalação

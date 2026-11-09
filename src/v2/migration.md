@@ -70,4 +70,4 @@ new CPF('90625966651').mask() // -> '906.259.666-51'
 new CPF('906.259.666-51').value // -> '90625966651'
 ```
 
-Quer continuar na 1.x por enquanto? A documentação da [versão legacy está aqui](/v1/).
+Quer continuar na 1.x por enquanto? A documentação da <a href="/v1">versão legacy está aqui</a>.

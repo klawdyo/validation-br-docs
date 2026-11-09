@@ -7,7 +7,7 @@ const version = ref('2.0')
 
 onMounted(() => {
   // Detectar versão atual baseado no pathname
-  if (window.location.pathname.includes('/v1/')) {
+  if (/^\/v1(\/|$)/.test(window.location.pathname)) {
     version.value = '1.0'
   } else {
     version.value = '2.0'
@@ -17,7 +17,7 @@ onMounted(() => {
 const handleVersionChange = (e: Event) => {
   const target = e.target as HTMLSelectElement
   if (target.value === '1.0') {
-    window.location.href = '/v1/'
+    window.location.href = '/v1'
   } else {
     window.location.href = '/'
   }

@@ -21,7 +21,11 @@ export default defineConfig({
   sitemap: {
     hostname: Shared.url,
     // Páginas de teste/demo e a 404 não devem aparecer no sitemap
-    transformItems: (items) => items.filter((item) => !NOINDEX_URLS.includes(item.url.replace(/^\//, ''))),
+    transformItems: (items) =>
+      items
+        .filter((item) => !NOINDEX_URLS.includes(item.url.replace(/^\//, '')))
+        // Índices de versão sem barra final (/v1, /v2), igual à canonical
+        .map((item) => ({ ...item, url: item.url.replace(/^(v[12])\/$/, '$1') })),
   },
 
   transformHead({ page, pageData, title, description }) {
@@ -115,8 +119,8 @@ export default defineConfig({
       {
         text: 'Versão',
         items: [
-          { text: Versions.current, link: '/v2/', },
-          { text: Versions.legacy, link: '/v1/', },
+          { text: Versions.current, link: '/v2', },
+          { text: Versions.legacy, link: '/v1', },
         ]
       },
     ],
