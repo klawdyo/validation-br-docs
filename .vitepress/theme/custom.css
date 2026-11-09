@@ -6,6 +6,11 @@
   --vp-c-brand-dimm: rgba(100, 108, 255, 0.1);
 }
 
+.VPImage.logo,
+.VPNavBarTitle .logo {
+  border-radius: 8px;
+}
+
 a.VPSocialLink[aria-label="npm"] {
   color: #CB3837
 }

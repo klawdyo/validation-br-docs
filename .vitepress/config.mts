@@ -7,6 +7,9 @@ import { sideBar as v2SideBar } from '../src/v2/.vitepress/v2.config.ts';
 import Unocss from 'unocss/vite'
 import { Versions } from './theme/versions.enum.ts';
 
+const NOINDEX_PAGES = ['404.md', 'test-icon.md', 'markdown-examples.md', 'api-examples.md'];
+const NOINDEX_URLS = NOINDEX_PAGES.map((p) => p.replace(/\.md$/, ''));
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   srcDir: "src",
@@ -14,12 +17,69 @@ export default defineConfig({
   title: Shared.name,
   description: Shared.description,
   cleanUrls: true,
+
+  sitemap: {
+    hostname: Shared.url,
+    // Páginas de teste/demo e a 404 não devem aparecer no sitemap
+    transformItems: (items) => items.filter((item) => !NOINDEX_URLS.includes(item.url.replace(/^\//, ''))),
+  },
+
+  transformHead({ page, pageData, title, description }) {
+    // Páginas que não devem ser indexadas: sem canonical e com noindex
+    if (NOINDEX_PAGES.includes(page)) {
+      return [['meta', { name: 'robots', content: 'noindex, nofollow' }]];
+    }
+
+    let clean = page.replace(/\.md$/, '');
+    if (clean.endsWith('/index') || clean === 'index') {
+      clean = clean.replace(/(^|\/)index$/, '');
+    }
+
+    // Se for uma página sem v1 e sem v2 (ex: 'cpf', 'install', etc.), a rota canônica é na v2
+    if (!clean.startsWith('v1') && !clean.startsWith('v2') && clean !== '') {
+      clean = `v2/${clean}`;
+    }
+
+    const canonicalPath = clean ? `/${clean}` : '/';
+    const canonicalUrl = `${Shared.url.replace(/\/$/, '')}${canonicalPath}`;
+
+    const pageTitle = pageData.frontmatter.title || title || Shared.name;
+    const pageDescription = pageData.frontmatter.description || description || Shared.description;
+    const ogImage = `${Shared.url.replace(/\/$/, '')}/logo-light.jpg`;
+
+    return [
+      ['link', { rel: 'canonical', href: canonicalUrl }],
+
+      // Open Graph
+      ['meta', { property: 'og:type', content: 'website' }],
+      ['meta', { property: 'og:site_name', content: Shared.name }],
+      ['meta', { property: 'og:title', content: pageTitle }],
+      ['meta', { property: 'og:description', content: pageDescription }],
+      ['meta', { property: 'og:url', content: canonicalUrl }],
+      ['meta', { property: 'og:image', content: ogImage }],
+      ['meta', { property: 'og:locale', content: 'pt_BR' }],
+
+      // Twitter Card
+      ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
+      ['meta', { name: 'twitter:title', content: pageTitle }],
+      ['meta', { name: 'twitter:description', content: pageDescription }],
+      ['meta', { name: 'twitter:image', content: ogImage }],
+    ];
+  },
+
   head: [
+    ['link', { rel: 'icon', type: 'image/jpeg', href: '/logo-light.jpg' }],
+    ['meta', { name: 'keywords', content: Shared.keywords }],
+    ['meta', { name: 'author', content: 'validation-br' }],
+    ['meta', { name: 'robots', content: 'index, follow' }],
+    ['meta', { name: 'theme-color', content: '#0d18eb' }],
+    ['link', { rel: 'sitemap', type: 'application/xml', href: '/sitemap.xml' }],
+
     // <meta name="google-adsense-account" content="ca-pub-9643986318610515">
     ['meta', { name: 'google-adsense-account', content: 'ca-pub-9643986318610515' }],
     [
       'script',
-      { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=GTM-W528C3M7' }
+      { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-9TQH37109T' }
     ],
     [
       'script',
@@ -27,7 +87,8 @@ export default defineConfig({
       `window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'GTM-W528C3M7');`
+
+      gtag('config', 'G-9TQH37109T');`
     ]
   ],
 
@@ -54,23 +115,22 @@ export default defineConfig({
       {
         text: 'Versão',
         items: [
-          { text: Versions.current, link: '/v1/', },
-          { text: Versions.next, link: '/v2/' },
+          { text: Versions.current, link: '/v2/', },
+          { text: Versions.legacy, link: '/v1/', },
         ]
       },
     ],
 
-    logo: '/logo.svg',
+    logo: {
+      light: '/logo-light.jpg',
+      dark: '/logo-dark.jpg',
+    },
 
 
     sidebar: {
-      '/v1': v1SideBar,
-      // '/v2
-      // '/v1': [
-      //   // { text: path.resolve(__dirname, '..', '.vitepress'), link: '/v2/install' },
-      //   ...v1SideBar
-      // ],
-      '/v2': v2SideBar,
+      '/v1/': v1SideBar,
+      '/v2/': v2SideBar,
+      '/': v2SideBar,
     },
 
     editLink: {

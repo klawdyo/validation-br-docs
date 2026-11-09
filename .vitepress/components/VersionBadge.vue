@@ -13,8 +13,8 @@ const versions = structuredClone(Versions);
 
 const route = useRoute()
 const version = computed(() => {
-    if (route.path.match(/^\/v1/)) return Versions.current;
-    if (route.path.match(/^\/v2/)) return Versions.next;
+    if (route.path.match(/^\/v1(\/|$)/)) return Versions.legacy;
+    if (route.path !== '/' && route.path !== '/index.html') return Versions.current;
 });
 
 </script>

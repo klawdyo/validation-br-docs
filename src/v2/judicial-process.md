@@ -1,30 +1,53 @@
 ---
 outline: deep
+title: Processo Judicial — número CNJ (Módulo 97)
+description: Valide o número de processo judicial padrão CNJ em JavaScript ou TypeScript, com cálculo do dígito verificador em Módulo 97 e extração de campos.
 ---
 
 # Processo Judicial
 
-Descrição: Validador para números de processo judicial unificados (formato CNJ, 20 dígitos).
+Valide número de processo judicial CNJ com JavaScript e TypeScript.
+
+Use o validador de processo judicial para conferir o dígito verificador em Módulo 97, extraia os campos decompostos do número (ano, tribunal, órgão, origem), e veja a implementação completa em JavaScript, TypeScript e Node.js com a validation-br. É o número que identifica um processo em qualquer tribunal do país desde 2010 — antes disso, cada tribunal tinha sua própria numeração, o que dificultava acompanhar um processo entre instâncias diferentes. O formato é usado pelo Judiciário, Ministério Público e sistemas de peticionamento eletrônico como PJe e e-SAJ.
+
+<DocPlayground
+  placeholder="Digite um número de processo para validar"
+  valid-label="Processo válido"
+  invalid-label="Processo inválido"
+  generate-label="Gerar processo de exemplo"
+  :validate="handleValidate"
+  :generate="handleGenerate"
+/>
 
 ## Como o cálculo é feito
 
-```text
-O número tem 20 dígitos: NNNNNNN-DD.AAAA.J.TR.OOOO (sequencial 7, DV 2, ano 4, órgão 1, tribunal 2, origem 4).
+O número tem 20 dígitos: `NNNNNNN-DD.AAAA.J.TR.OOOO` (sequencial 7,
+DV 2, ano 4, órgão 1, tribunal 2, origem 4). Diferente do CPF ou do
+CNPJ, o DV **não** é uma soma ponderada dígito a dígito — o algoritmo é
+o Módulo 97 de Base 10 (ISO 7064), o mesmo usado em IBAN. Como o número
+tem dígitos demais para o inteiro do JavaScript calcular de uma vez só,
+o cálculo é fatorado em 3 etapas: primeiro o sequencial sozinho, depois
+o resultado concatenado com ano/órgão/tribunal, e por fim concatenado
+com a origem — cada etapa aplicando `% 97` de novo antes de seguir para
+a próxima. No final, o dígito verificador é `98` menos o resto da
+última etapa.
 
-O cálculo do DV usa o algoritmo Módulo 97 de Base 10 (ISO 7064):
-- Remova o DV (ou substitua por '00' no final) e aplique uma fatoração por partes para evitar inteiros grandes.
-- Aplicar %97 nas partes concatenadas conforme especificado e por fim dv = 98 - (resultado % 97).
-
-Exemplo resumido no código-fonte: calcular part1 = primeiros 7 % 97, concatenar com ano/j/tr e %97, concatenar com origem + '00' e %97, então dv = 98 - resultado.
-
-Fonte: documentação CNJ e referência ISO.
-```
+<img src="/diagrams/judicial-process-check-digits.svg" alt="Cálculo passo a passo do dígito verificador do Processo Judicial (Módulo 97)" />
 
 ## Exemplos (API)
 
 ```js
+import { isJudicialProcess } from 'validation-br';
+import { JudicialProcess } from 'validation-br/judicial-process';
+
+// Modo rápido
+isJudicialProcess('0002080-25.2012.5.15.0049'); // -> true
+
 // Construir, validar e acessar partes
 const p = new JudicialProcess('0002080-25.2012.5.15.0049')
+console.log('p.value', p.value)
+console.log('p.toString()', p.toString())
+console.log('p.mask()', p.mask())
 console.log('processNumber', p.processNumber) // primeiros 7
 console.log('checksum', p.checksum)      // dv
 console.log('year', p.year)
@@ -40,3 +63,21 @@ console.log('JudicialProcess.fake()', fake.toString())
 const checksum = JudicialProcess.checksum('000208020125150049')
 console.log('JudicialProcess.checksum()', checksum)
 ```
+
+<script setup lang="ts">
+import { JudicialProcess } from 'validation-br-v2/judicial-process'
+
+function handleValidate(value: string) {
+  try {
+    new JudicialProcess(value)
+    return true
+  } catch {
+    return false
+  }
+}
+
+function handleGenerate(withMask: boolean) {
+  const fake = JudicialProcess.fake()
+  return withMask ? fake.mask() : fake.toString()
+}
+</script>

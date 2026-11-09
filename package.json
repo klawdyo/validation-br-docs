@@ -13,6 +13,7 @@
     "docs:preview": "vitepress preview"
   },
   "dependencies": {
-    "validation-br": "^1.6.3-d"
+    "validation-br": "^1.6.5",
+    "validation-br-v2": "npm:validation-br@^2.0.0"
   }
 }

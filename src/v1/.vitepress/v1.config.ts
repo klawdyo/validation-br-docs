@@ -13,7 +13,7 @@ export const sideBar: DefaultTheme.SidebarItem[] = [
           { text: 'CPF', link: '/v1/cpf' },
           { text: 'CNPJ', link: '/v1/cnpj' },
           { text: 'CNH', link: '/v1/cnh' },
-          // { text: 'Placa (CarPlate)', link: '/v1/carplate' },
+          { text: 'Telefone', link: '/v1/phone' },
           { text: 'PIS / PASEP', link: '/v1/pis-pasep' },
           { text: 'NUP17', link: '/v1/nup17' },
           { text: 'Processo Judicial', link: '/v1/judicial-process' },
@@ -26,11 +26,12 @@ export const sideBar: DefaultTheme.SidebarItem[] = [
       {
         text: 'Integração',
         items: [
-          { text: 'Yup', link: '/v1/integrations/yup' },
-          { text: 'Zod', link: '/v1/integrations/zod' },
           { text: 'Class Validator', link: '/v1/integrations/class-validator' },
-          { text: 'Veelidate', link: '/v1/integrations/veelidate' },
-          { text: 'Joi', link: '/v1/integrations/joi' }
+          { text: 'Indicative', link: '/v1/integrations/indicative' },
+          { text: 'Joi', link: '/v1/integrations/joi' },
+          { text: 'Vuelidate', link: '/v1/integrations/vuelidate' },
+          { text: 'Yup', link: '/v1/integrations/yup' },
+          // { text: 'Zod', link: '/v1/integrations/zod' },
         ]
       },
     ]

@@ -1,10 +1,14 @@
 ---
 outline: deep
+title: Utils — funções internas dos validadores
+description: Referência das funções utilitárias em TypeScript usadas pelos validadores da validation-br, como cálculo de dígito verificador e limpeza de valor.
 ---
 
 # Utils
 
-Descrição: Funções utilitárias usadas pelos validadores. Contém helpers como `sumToDV`, `checkRepeatedSequence`, `sumElementsByMultipliers`, `clearValue`, `insertAtPosition` e `removeFromPosition`.
+Referência das funções utilitárias internas em TypeScript da validation-br.
+
+Veja como funcionam o cálculo de dígito verificador genérico, a limpeza de valor e outras funções internas usadas por vários validadores da biblioteca em TypeScript e Node.js. São funções de apoio usadas por vários validadores da lib — a maioria das pessoas não precisa importar isso diretamente. Elas existem para evitar duplicação entre os validadores: o mesmo cálculo de módulo 11, por exemplo, aparece em CPF, CNPJ, CNH e vários outros documentos, e por isso vive centralizado aqui. Vale a pena conhecer esse módulo principalmente para quem quer estender a biblioteca com um validador próprio.
 
 ## Funções principais
 
