@@ -1,3 +1,10 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/:slug((?!v1(?:/|$)|v2(?:/|$)|404$|test-icon$|markdown-examples$|api-examples$)[A-Za-z0-9_/-]+)",
+      "destination": "/v2/:slug",
+      "permanent": true
+    }
+  ]
 }

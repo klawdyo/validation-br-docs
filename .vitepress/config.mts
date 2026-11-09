@@ -7,6 +7,9 @@ import { sideBar as v2SideBar } from '../src/v2/.vitepress/v2.config.ts';
 import Unocss from 'unocss/vite'
 import { Versions } from './theme/versions.enum.ts';
 
+const NOINDEX_PAGES = ['404.md', 'test-icon.md', 'markdown-examples.md', 'api-examples.md'];
+const NOINDEX_URLS = NOINDEX_PAGES.map((p) => p.replace(/\.md$/, ''));
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   srcDir: "src",
@@ -17,9 +20,16 @@ export default defineConfig({
 
   sitemap: {
     hostname: Shared.url,
+    // Páginas de teste/demo e a 404 não devem aparecer no sitemap
+    transformItems: (items) => items.filter((item) => !NOINDEX_URLS.includes(item.url.replace(/^\//, ''))),
   },
 
   transformHead({ page, pageData, title, description }) {
+    // Páginas que não devem ser indexadas: sem canonical e com noindex
+    if (NOINDEX_PAGES.includes(page)) {
+      return [['meta', { name: 'robots', content: 'noindex, nofollow' }]];
+    }
+
     let clean = page.replace(/\.md$/, '');
     if (clean.endsWith('/index') || clean === 'index') {
       clean = clean.replace(/(^|\/)index$/, '');
